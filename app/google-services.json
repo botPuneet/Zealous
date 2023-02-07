@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1017001596221:android:dceced1a3acb85562ca154",
+        "android_client_info": {
+          "package_name": "com.example.zealous"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017001596221-g4c1b6j4mujmb4ttedco6ah6uv520p80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zealous",
+            "certificate_hash": "66d51bb3a684ecbc3cf4f618f7014f9afc5c5590"
+          }
+        },
+        {
+          "client_id": "1017001596221-v8gge10d3cc14ba613g5mp74aapl1s22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmMeYEjhGkaVeHfpuOxHKSbLxMOqw_4vs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017001596221-13anvc242fkumaco4olbsi4u5lmunakh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1017001596221:android:8740d44b2144447e2ca154",
         "android_client_info": {
           "package_name": "com.example.zeolous"
@@ -15,7 +52,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1017001596221-mlu6tth7ei6ihlei5fqa4df38db9qe26.apps.googleusercontent.com",
+          "client_id": "1017001596221-q9np9ht35b3rr948jroa6scoggvemu65.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.zeolous",
