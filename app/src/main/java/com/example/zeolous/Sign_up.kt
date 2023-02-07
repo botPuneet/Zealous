@@ -34,7 +34,8 @@ class Sign_up : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail().build()
 
         signUpgoogle = GoogleSignIn.getClient(this, gso)
 
@@ -55,7 +56,7 @@ class Sign_up : AppCompatActivity() {
 
                     val email = binding1.EmailAddress.text.toString()
                     val password = binding1.Password.text.toString()
-                    val user = firebaseAuth.currentUser
+                   // val user = firebaseAuth.currentUser
                     database = FirebaseDatabase.getInstance().getReference("Users")
                     val users = user(name,  email, password)
                     database.child(name).setValue(users)
@@ -90,13 +91,16 @@ class Sign_up : AppCompatActivity() {
     private fun signIngoogle() {
         val signInIntent = signUpgoogle.signInIntent
         launcher.launch(signInIntent)
+
+
     }
 
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result ->
 
             if (result.resultCode == Activity.RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+
                 handleresults(task)
             }
 
@@ -123,7 +127,6 @@ class Sign_up : AppCompatActivity() {
                 var intent3 = Intent(this, Home::class.java)
 
                 startActivity(intent3)
-
             }else{
                 Toast.makeText(this , it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
