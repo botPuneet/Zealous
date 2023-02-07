@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboard2"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:iconTint="@color/teal_700"
+        />
+
+    <item
+        android:id="@+id/buy"
+        android:title="buy"
+        android:icon="@drawable/baseline_add_shopping_cart_24"
+        android:iconTint="@color/teal_700"
+        />
+
+    <item
+        android:id="@+id/zealousPlus2"
+        android:title="Zealous Plus"
+        android:icon="@drawable/zealousplus"
+        android:iconTint="@color/teal_700"
+        />
+    <item
+        android:id="@+id/chatbox"
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat_bubble_24"
+        android:iconTint="@color/teal_700"
+        />
+
+    <item
+        android:id="@+id/profile"
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:iconTint="@color/teal_700"
+        />
+</menu>

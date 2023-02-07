@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboard2">
+
+    <fragment
+        android:id="@+id/dashboard2"
+        android:name="com.example.zeolous.Dashboard"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/buy"
+        android:name="com.example.zeolous.Buy"
+        android:label="fragment_buy"
+        tools:layout="@layout/fragment_buy" />
+    <fragment
+        android:id="@+id/zealousPlus2"
+        android:name="com.example.zeolous.zealousPlus"
+        android:label="fragment_zealous_plus"
+        tools:layout="@layout/fragment_zealous_plus" />
+    <fragment
+        android:id="@+id/chatbox"
+        android:name="com.example.zeolous.Chatbox"
+        android:label="fragment_chatbox"
+        tools:layout="@layout/fragment_chatbox" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.zeolous.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
