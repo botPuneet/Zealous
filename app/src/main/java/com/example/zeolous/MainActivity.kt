@@ -1,6 +1,8 @@
 package com.example.zeolous
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var onboardItemAdapter: onBoardItemAdapter
     private lateinit var indicatorcontainer : LinearLayout
+    lateinit var preferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding  = ActivityMainBinding.inflate(layoutInflater)
@@ -27,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         setonBOarditems()
         setupindicator()
         setupcurrentindicator(0)
+        preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
+        val flag = preferences.getBoolean("flag_visited",false)
+        if(flag ==true){
+            startActivity(Intent(applicationContext,Home::class.java))
+            finish()
+        }
 
         binding.getStarted.setOnClickListener{
             navSignup()

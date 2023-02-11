@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:orientation="vertical"
+
+    tools:context=".Personalization">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Personalization"
+        android:fontFamily="@font/font"
+        android:textColor="@color/grey"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/font"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/grey"
+        android:text="Add more interests so we can begin to personalize you"
+        android:textSize="19sp"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="20dp"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/personal1"
+
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+
+                android:background="@drawable/imput_bg"
+                android:drawableStart="@drawable/programming"
+
+                android:elevation="36dp"
+                android:text="Development"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/personal2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/imput_bg"
+                android:elevation="36dp"
+                android:drawableLeft="@drawable/growth"
+
+
+                android:text="Business"
+                android:textColor="@color/black" />
+
+
+            <Button
+                android:id="@+id/personal7"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/imput_bg"
+                android:elevation="36dp"
+
+                android:text="Design"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="5dp"
+
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/personal3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:text="Finance and Accounting"
+                android:background="@drawable/imput_bg"
+                android:textColor="@color/black"
+              />
+
+            <Button
+                android:id="@+id/personal17"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="History"
+                android:textColor="@color/black" />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="5dp"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/personal4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="15dp"
+                android:elevation="36dp"
+                android:text="IT and Software"
+                android:background="@drawable/imput_bg"
+                android:textColor="@color/black"
+                />
+            <Button
+                android:id="@+id/personal9"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="15dp"
+                android:elevation="36dp"
+                android:text="Lifestyle"
+
+                android:background="@drawable/imput_bg"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:id="@+id/personal18"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginLeft="10dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="Acting"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/personal16"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="Media"
+                android:textColor="@color/black" />
+
+
+            <Button
+                android:id="@+id/personal15"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/imput_bg"
+                android:text="Teaching and Academics"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/personal14"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="Music"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/personal13"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="Health and Fitness"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/personal6"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:layout_marginLeft="15dp"
+                android:text="Personal Development"
+                android:background="@drawable/imput_bg"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/personal11"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:background="@drawable/imput_bg"
+                android:text="Photography"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/personal12"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:elevation="36dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/imput_bg"
+                android:text="Videography"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_bg_white"
+        android:textColor="@color/white"
+        android:text="Continue" />
+
+
+</LinearLayout>

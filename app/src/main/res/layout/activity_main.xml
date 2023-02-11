@@ -43,7 +43,7 @@
         android:layout_marginTop="150dp"
         android:background="@drawable/btn_bg_white"
         android:elevation="50dp"
-
+       android:fontFamily="@font/font"
         android:text="Getting Started"
         android:textColor="@color/white"
         android:textSize="16sp"

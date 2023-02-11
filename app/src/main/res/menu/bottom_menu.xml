@@ -5,6 +5,7 @@
         android:title="Home"
         android:icon="@drawable/ic_baseline_home_24"
         android:iconTint="@color/teal_700"
+        android:fontFamily="@font/font"
         />
 
     <item
@@ -12,6 +13,7 @@
         android:title="buy"
         android:icon="@drawable/baseline_add_shopping_cart_24"
         android:iconTint="@color/teal_700"
+        android:fontFamily="@font/font"
         />
 
     <item
@@ -19,12 +21,14 @@
         android:title="Zealous Plus"
         android:icon="@drawable/zealousplus"
         android:iconTint="@color/teal_700"
+        android:fontFamily="@font/font"
         />
     <item
         android:id="@+id/chatbox"
         android:title="Chat"
         android:icon="@drawable/ic_baseline_chat_bubble_24"
         android:iconTint="@color/teal_700"
+        android:fontFamily="@font/font"
         />
 
     <item
@@ -32,5 +36,6 @@
         android:title="Settings"
         android:icon="@drawable/ic_baseline_person_24"
         android:iconTint="@color/teal_700"
+        android:fontFamily="@font/font"
         />
 </menu>

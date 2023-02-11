@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import com.example.zeolous.Models.Guser
 import com.example.zeolous.Models.user
 import com.example.zeolous.databinding.ActivitySignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 class Sign_up : AppCompatActivity() {
 
     private lateinit var binding1: ActivitySignUpBinding
-
+    lateinit var sharedPreferences: SharedPreferences
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var signUpgoogle: GoogleSignInClient
     private lateinit var database: DatabaseReference
@@ -46,11 +46,11 @@ class Sign_up : AppCompatActivity() {
             finish()
         }
         binding1.button.setOnClickListener {
-            firebaseAuth.createUserWithEmailAndPassword(
-                binding1.EmailAddress.text.toString(),
-                binding1.Password.text.toString()
-            ).addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
+
+            if(binding1.Password.text.toString()==binding1.RePassword.text.toString()){
+                firebaseAuth.createUserWithEmailAndPassword(binding1.EmailAddress.text.toString(), binding1.Password.text.toString())
+                    .addOnCompleteListener(this) { task ->
+                   if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val name = binding1.personName.text.toString()
 
@@ -60,12 +60,21 @@ class Sign_up : AppCompatActivity() {
                     database = FirebaseDatabase.getInstance().getReference("Users")
                     val users = user(name,  email, password)
                     database.child(name).setValue(users)
+                       sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
 
+                       val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
+
+                       val firstWord = arr[0] //the
+
+                       val theRest = arr[1]
+                       val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                       editor.putString("usernameP", firstWord)
+                       editor.apply()
 
                     // data tranfers
 
 
-                    var intent = Intent(this, Home::class.java)
+                    var intent = Intent(this, Personalization::class.java)
 
                     startActivity(intent)
                 } else {
@@ -76,7 +85,11 @@ class Sign_up : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                }
+                }}
+
+            } else {
+                 Toast.makeText(this,"Mismatch passward",Toast.LENGTH_SHORT).show()
+
             }
         }
 
@@ -124,7 +137,26 @@ class Sign_up : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                var intent3 = Intent(this, Home::class.java)
+                  val email = account.email.toString()
+                val name = account.displayName.toString()
+                database = FirebaseDatabase.getInstance().getReference("GoogleUsers")
+                val guser = Guser(name,  email)
+                database.child(name).setValue(guser)
+                var first_name  :String = ""
+
+                sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
+
+                val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
+
+                val firstWord = arr[0] //the
+
+
+                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString("usernameP", firstWord)
+                editor.apply()
+
+
+                var intent3 = Intent(this, Personalization::class.java)
 
                 startActivity(intent3)
             }else{
