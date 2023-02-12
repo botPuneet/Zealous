@@ -69,6 +69,7 @@ class Sign_up : AppCompatActivity() {
                        val theRest = arr[1]
                        val editor : SharedPreferences.Editor = sharedPreferences.edit()
                        editor.putString("usernameP", firstWord)
+                       editor.putString("Full_name",name)
                        editor.apply()
 
                     // data tranfers
@@ -153,6 +154,8 @@ class Sign_up : AppCompatActivity() {
 
                 val editor : SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString("usernameP", firstWord)
+                editor.putString("Full_name",name)
+
                 editor.apply()
 
 

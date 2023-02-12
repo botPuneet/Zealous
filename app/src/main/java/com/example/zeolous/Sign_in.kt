@@ -1,9 +1,12 @@
 package com.example.zeolous
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.zeolous.Models.Guser
@@ -22,6 +25,7 @@ class Sign_in : AppCompatActivity() {
     private lateinit var binding2: ActivitySignInBinding
     private lateinit var auth : FirebaseAuth
     private lateinit var signUpgoogle: GoogleSignInClient
+    lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding2  = ActivitySignInBinding.inflate(layoutInflater)
@@ -33,6 +37,11 @@ class Sign_in : AppCompatActivity() {
         signUpgoogle = GoogleSignIn.getClient(this, gso)
         super.onCreate(savedInstanceState)
         setContentView(binding2.root)
+        preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("flag_visited",true)
+        editor.apply()
+
         binding2.textView7.setOnClickListener{
             startActivity(Intent(applicationContext,Sign_up::class.java))
             finish()
@@ -105,7 +114,7 @@ class Sign_in : AppCompatActivity() {
             if (it.isSuccessful) {
 
 
-                var intent3 = Intent(this, Personalization::class.java)
+                var intent3 = Intent(this, Home::class.java)
 
                 startActivity(intent3)
             }else{

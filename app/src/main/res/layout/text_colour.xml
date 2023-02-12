@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_text"
+    android:textSize="16dp"
+    android:textColor="@color/black"
+    android:fontFamily="@font/font"
+    android:layout_width="match_parent"
+    android:text="Fuck"
+    android:padding="5dp"
+    android:layout_height="35dp">
+
+</TextView>
