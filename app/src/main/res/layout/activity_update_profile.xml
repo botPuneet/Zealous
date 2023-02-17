@@ -16,15 +16,47 @@
         android:layout_marginTop="30dp"
         android:textSize="24dp"
         android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. Change your profile picture"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+      android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"/>
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/profile"
         android:layout_gravity="center"
      />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="2. Your name"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/update_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Enter your name"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:background="@drawable/imput_bg"
+        android:elevation="16dp"
+        android:layout_marginTop="15dp"/>
+
+
 
     <Button
         android:id="@+id/button5"

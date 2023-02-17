@@ -257,10 +257,10 @@ class Personalization : AppCompatActivity() {
             if(flag[17]) {
                 interests.add(index,personal_18)
                 index++
-                binding_p.personal17.backgroundTintList=getColorStateList(android.R.color.holo_blue_bright)
+                binding_p.personal18.backgroundTintList=getColorStateList(android.R.color.holo_blue_bright)
                 flag[17] = false
             }else{
-                binding_p.personal17.backgroundTintList=getColorStateList(android.R.color.white)
+                binding_p.personal18.backgroundTintList=getColorStateList(android.R.color.white)
                 flag[17] = true
                 index--
 

@@ -68,8 +68,10 @@ class Sign_up : AppCompatActivity() {
 
                        val theRest = arr[1]
                        val editor : SharedPreferences.Editor = sharedPreferences.edit()
-                       editor.putString("usernameP", firstWord)
+                       editor.putString("First_name", firstWord)
                        editor.putString("Full_name",name)
+                       editor.putString("Last_name",theRest)
+                       editor.putString("type","Users")
                        editor.apply()
 
                     // data tranfers
@@ -149,13 +151,14 @@ class Sign_up : AppCompatActivity() {
 
                 val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
 
-                val firstWord = arr[0] //the
-
+                val firstWord = arr[0]
+                val theRest = arr[1]
 
                 val editor : SharedPreferences.Editor = sharedPreferences.edit()
-                editor.putString("usernameP", firstWord)
+                editor.putString("First_name", firstWord)
                 editor.putString("Full_name",name)
-
+                editor.putString("Last_name",theRest)
+                editor.putString("type","GoogleUsers")
                 editor.apply()
 
 

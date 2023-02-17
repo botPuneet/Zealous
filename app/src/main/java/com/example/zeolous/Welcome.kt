@@ -15,7 +15,7 @@ class Welcome : AppCompatActivity() {
         binding_w = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding_w.root)
         preferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
-        val name = preferences.getString("usernameP", "")
+        val name = preferences.getString("First_name", "")
         preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
         editor.putBoolean("flag_visited",true)

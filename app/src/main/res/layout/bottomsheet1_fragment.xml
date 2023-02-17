@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_bottom">
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="44dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/font"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:text="Welcome to Zelous Tube Application"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/font"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/light_grey"
+        android:text="Hand-picked instructor and expertly crafted courses, designed for the modern students and entrepreneur"/>
+
+
+            <Button
+                android:id="@+id/exploreCourse"
+                android:layout_width="150dp"
+                android:fontFamily="@font/font"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg_white"
+
+                android:text="Browse Courses"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:id="@+id/becomeInstructor"
+                android:layout_width="200dp"
+                android:fontFamily="@font/font"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg_blacck"
+                android:text="Are you a Instructor"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/bottomsheet" />
+
+</LinearLayout>

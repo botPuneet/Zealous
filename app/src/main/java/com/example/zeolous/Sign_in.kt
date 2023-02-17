@@ -39,8 +39,8 @@ class Sign_in : AppCompatActivity() {
         setContentView(binding2.root)
         preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean("flag_visited",true)
-        editor.apply()
+//        editor.putBoolean("flag_visited",true)
+//        editor.apply()
 
         binding2.textView7.setOnClickListener{
             startActivity(Intent(applicationContext,Sign_up::class.java))
@@ -55,8 +55,8 @@ class Sign_in : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         var intent3 = Intent(this, Home::class.java)
                         startActivity(intent3)
-
-
+                        editor.apply()
+                        editor.putBoolean("flag_visited",true)
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -112,8 +112,9 @@ class Sign_in : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-
-
+                val editor : SharedPreferences.Editor = preferences.edit()
+                editor.putBoolean("flag_visited",true)
+                editor.apply()
                 var intent3 = Intent(this, Home::class.java)
 
                 startActivity(intent3)
