@@ -28,6 +28,7 @@ class Sign_up : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var signUpgoogle: GoogleSignInClient
     private lateinit var database: DatabaseReference
+    private lateinit var database2:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
 
         binding1 = ActivitySignUpBinding.inflate(layoutInflater)
@@ -53,25 +54,29 @@ class Sign_up : AppCompatActivity() {
                    if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val name = binding1.personName.text.toString()
-
                     val email = binding1.EmailAddress.text.toString()
                     val password = binding1.Password.text.toString()
-                   // val user = firebaseAuth.currentUser
-                    database = FirebaseDatabase.getInstance().getReference("Users")
+
+                       database = FirebaseDatabase.getInstance().getReference("Users")
+                       database2 = FirebaseDatabase.getInstance().getReference("usernames")
+
                     val users = user(name,  email, password)
-                    database.child(name).setValue(users)
+
+                       database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(users)
+                       database2.child(name).child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(name)
+
                        sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
 
                        val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
-
                        val firstWord = arr[0] //the
 
-                       val theRest = arr[1]
+//                       val theRest = arr[1]
                        val editor : SharedPreferences.Editor = sharedPreferences.edit()
                        editor.putString("First_name", firstWord)
                        editor.putString("Full_name",name)
-                       editor.putString("Last_name",theRest)
+                       editor.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
                        editor.putString("type","Users")
+                       editor.putString("email",email)
                        editor.apply()
 
                     // data tranfers
@@ -140,25 +145,30 @@ class Sign_up : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                  val email = account.email.toString()
+                val email1 = account.email.toString()
                 val name = account.displayName.toString()
-                database = FirebaseDatabase.getInstance().getReference("GoogleUsers")
-                val guser = Guser(name,  email)
-                database.child(name).setValue(guser)
-                var first_name  :String = ""
+
+
+                database = FirebaseDatabase.getInstance().getReference("Users")
+                database2 = FirebaseDatabase.getInstance().getReference("usernames")
+
+
+                val guser = Guser(name,  email1)
+
+                database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(guser)
+                database2.child(name).child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(name)
+
 
                 sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
-
                 val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
-
                 val firstWord = arr[0]
-                val theRest = arr[1]
 
                 val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
                 editor.putString("First_name", firstWord)
                 editor.putString("Full_name",name)
-                editor.putString("Last_name",theRest)
                 editor.putString("type","GoogleUsers")
+                editor.putString("email",email1)
                 editor.apply()
 
 

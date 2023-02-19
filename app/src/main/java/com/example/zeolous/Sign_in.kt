@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class Sign_in : AppCompatActivity() {
@@ -26,6 +27,8 @@ class Sign_in : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var signUpgoogle: GoogleSignInClient
     lateinit var preferences: SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var database : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding2  = ActivitySignInBinding.inflate(layoutInflater)
@@ -37,10 +40,11 @@ class Sign_in : AppCompatActivity() {
         signUpgoogle = GoogleSignIn.getClient(this, gso)
         super.onCreate(savedInstanceState)
         setContentView(binding2.root)
+
+
         preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
-//        editor.putBoolean("flag_visited",true)
-//        editor.apply()
+
 
         binding2.textView7.setOnClickListener{
             startActivity(Intent(applicationContext,Sign_up::class.java))
@@ -53,10 +57,34 @@ class Sign_in : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        var intent3 = Intent(this, Home::class.java)
-                        startActivity(intent3)
-                        editor.apply()
+
+
                         editor.putBoolean("flag_visited",true)
+                        editor.apply()
+
+                        database = FirebaseDatabase.getInstance().getReference("Users")
+                        database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).get().addOnSuccessListener {
+                           val name = it.child("name").value
+
+                            sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
+
+                            val arr = name.toString().split(" ".toRegex(), limit = 2).toTypedArray()
+                            val firstWord = arr[0] //the
+
+                            val theRest = arr[1]
+                            val editor2 : SharedPreferences.Editor = sharedPreferences.edit()
+                            editor2.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                            editor2.putString("First_name", firstWord)
+                            editor2.putString("Full_name",name.toString())
+                            editor2.putString("Last_name",theRest)
+                            editor2.putString("type","Users")
+                            editor2.putString("email",binding2.editTextTextEmailAddress.text.toString())
+                            editor2.apply()
+                            var intent3 = Intent(this, Home::class.java)
+                            startActivity(intent3)
+
+                        }
+
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -115,9 +143,30 @@ class Sign_in : AppCompatActivity() {
                 val editor : SharedPreferences.Editor = preferences.edit()
                 editor.putBoolean("flag_visited",true)
                 editor.apply()
+
+                database = FirebaseDatabase.getInstance().getReference("Users")
+                database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).get().addOnSuccessListener {
+                    val name = it.child("name").value
+                    sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
+
+                    val arr = name.toString().split(" ".toRegex(), limit = 2).toTypedArray()
+
+                    val firstWord = arr[0] //the
+
+                    val theRest = arr[1]
+                    val editor2 : SharedPreferences.Editor = sharedPreferences.edit()
+                    editor2.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                    editor2.putString("First_name", firstWord)
+                    editor2.putString("Full_name",name.toString())
+                    editor2.putString("Last_name",theRest)
+                    editor2.putString("type","GoogleUsers")
+                    editor2.putString("email",account.email.toString())
+                    editor2.apply()
                 var intent3 = Intent(this, Home::class.java)
 
                 startActivity(intent3)
+
+            }
             }else{
                 Toast.makeText(this , it.exception.toString(), Toast.LENGTH_SHORT).show()
             }

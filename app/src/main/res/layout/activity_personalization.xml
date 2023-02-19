@@ -34,7 +34,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
 
         android:layout_marginTop="20dp"
@@ -293,7 +293,18 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-
+    <TextView
+        android:id="@+id/noofSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/font"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey"
+        android:text="Select any 5 (0/5)"
+        android:textSize="19sp"
+        />
     <Button
         android:id="@+id/button2"
         android:layout_width="100dp"
