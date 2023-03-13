@@ -15,11 +15,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.zeolous.Adapter.onBoardItemAdapter
 import com.example.zeolous.Models.onBoardItem
 import com.example.zeolous.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import java.text.ParsePosition
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth :FirebaseAuth
     private lateinit var onboardItemAdapter: onBoardItemAdapter
     private lateinit var indicatorcontainer : LinearLayout
     lateinit var preferences: SharedPreferences
@@ -27,15 +30,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding  = ActivityMainBinding.inflate(layoutInflater)
+        auth = FirebaseAuth.getInstance()
         setContentView(binding.root)
         setonBOarditems()
         setupindicator()
         setupcurrentindicator(0)
-        preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
-        val flag = preferences.getBoolean("flag_visited",false)
-        if(flag ==true){
+
+        if(auth.currentUser!=null){
             startActivity(Intent(applicationContext,Home::class.java))
-            finish()
+           finish()
         }
 
         binding.getStarted.setOnClickListener{

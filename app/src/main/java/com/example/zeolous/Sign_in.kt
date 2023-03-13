@@ -42,8 +42,7 @@ class Sign_in : AppCompatActivity() {
         setContentView(binding2.root)
 
 
-        preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
-        val editor : SharedPreferences.Editor = preferences.edit()
+
 
 
         binding2.textView7.setOnClickListener{
@@ -59,8 +58,7 @@ class Sign_in : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
 
 
-                        editor.putBoolean("flag_visited",true)
-                        editor.apply()
+
 
                         database = FirebaseDatabase.getInstance().getReference("Users")
                         database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).get().addOnSuccessListener {
@@ -140,9 +138,6 @@ class Sign_in : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                val editor : SharedPreferences.Editor = preferences.edit()
-                editor.putBoolean("flag_visited",true)
-                editor.apply()
 
                 database = FirebaseDatabase.getInstance().getReference("Users")
                 database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).get().addOnSuccessListener {

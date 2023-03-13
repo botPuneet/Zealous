@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="20dp"
+    android:backgroundTint="@color/white"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="20dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/Uri_chat_search"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="3dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:elevation="32dp"
+                android:src="@drawable/a"
+                />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="NAME :  "
+               android:textStyle="bold"
+               android:fontFamily="@font/font"
+               android:textSize="20dp"
+               android:textColor="@color/black"
+               android:layout_marginTop="20dp"
+               android:layout_marginLeft="20dp"
+               />
+            <TextView
+                android:id="@+id/name_chat_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puneet kumar  "
+                android:fontFamily="@font/font"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TYPE  :  "
+                android:textStyle="bold"
+                android:fontFamily="@font/font"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="20dp"
+                />
+            <TextView
+                android:id="@+id/type_chat_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student "
+                android:fontFamily="@font/font"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginTop="2dp"
+
+                />
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

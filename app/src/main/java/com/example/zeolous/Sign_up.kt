@@ -1,5 +1,6 @@
 package com.example.zeolous
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -29,6 +30,7 @@ class Sign_up : AppCompatActivity() {
     private lateinit var signUpgoogle: GoogleSignInClient
     private lateinit var database: DatabaseReference
     private lateinit var database2:DatabaseReference
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         binding1 = ActivitySignUpBinding.inflate(layoutInflater)
@@ -42,13 +44,18 @@ class Sign_up : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding1.root)
+
+        //signIN button
         binding1.textView7.setOnClickListener {
             startActivity(Intent(applicationContext, Sign_in::class.java))
             finish()
         }
+
+        //Signup by email
         binding1.button.setOnClickListener {
 
             if(binding1.Password.text.toString()==binding1.RePassword.text.toString()){
+
                 firebaseAuth.createUserWithEmailAndPassword(binding1.EmailAddress.text.toString(), binding1.Password.text.toString())
                     .addOnCompleteListener(this) { task ->
                    if (task.isSuccessful) {
@@ -56,22 +63,17 @@ class Sign_up : AppCompatActivity() {
                     val name = binding1.personName.text.toString()
                     val email = binding1.EmailAddress.text.toString()
                     val password = binding1.Password.text.toString()
-
+                       val UId = FirebaseAuth.getInstance().getCurrentUser()!!.getUid().toString()
                        database = FirebaseDatabase.getInstance().getReference("Users")
                        database2 = FirebaseDatabase.getInstance().getReference("usernames")
 
-                    val users = user(name,  email, password)
+                    val users = user(UId,name,  email, password)
 
-                       database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(users)
-                       database2.child(name).child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(name)
 
                        sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
-
-                       val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
-                       val firstWord = arr[0] //the
-
-//                       val theRest = arr[1]
                        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                       val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
+                       val firstWord = arr[0]
                        editor.putString("First_name", firstWord)
                        editor.putString("Full_name",name)
                        editor.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
@@ -79,27 +81,36 @@ class Sign_up : AppCompatActivity() {
                        editor.putString("email",email)
                        editor.apply()
 
-                    // data tranfers
+                       //Users
+                       database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(users)
 
+                       //usernames
+                       database2.child(name).get().addOnSuccessListener {
+                           val count =1
+                           if(it.child("UID$count").exists()){
+                               count+1
+                           }else{
+                               database2.child(name).child("UID$count").setValue(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                               editor.putString("First_name", "UID$count")
+                           }
+                       }
 
-                    var intent = Intent(this, Personalization::class.java)
-
+                    var intent = Intent(this, username::class.java)
                     startActivity(intent)
+
+
                 } else {
                     // If sign in fails, display a message to the user.
-
                     Toast.makeText(
                         this, task.getException().toString(),
                         Toast.LENGTH_SHORT
                     ).show()
-
                 }}
 
             } else {
                  Toast.makeText(this,"Mismatch passward",Toast.LENGTH_SHORT).show()
-
             }
-        }
+        }//set on click listener of email
 
 
         binding1.withGoogle.setOnClickListener {
@@ -107,7 +118,7 @@ class Sign_up : AppCompatActivity() {
         }
 
 
-    }
+    }// close of create function
 
     private fun signIngoogle() {
         val signInIntent = signUpgoogle.signInIntent
@@ -145,25 +156,21 @@ class Sign_up : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
+
                 val email1 = account.email.toString()
                 val name = account.displayName.toString()
-
-
+                val UId = FirebaseAuth.getInstance().getCurrentUser()!!.getUid().toString()
                 database = FirebaseDatabase.getInstance().getReference("Users")
                 database2 = FirebaseDatabase.getInstance().getReference("usernames")
 
-
-                val guser = Guser(name,  email1)
-
-                database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(guser)
-                database2.child(name).child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(name)
-
+                val guser = Guser(UId,name,  email1)
 
                 sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
+                database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).setValue(guser)
+                val editor : SharedPreferences.Editor = sharedPreferences.edit()
                 val arr = name.split(" ".toRegex(), limit = 2).toTypedArray()
                 val firstWord = arr[0]
 
-                val editor : SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString("Uid",FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
                 editor.putString("First_name", firstWord)
                 editor.putString("Full_name",name)
@@ -171,9 +178,23 @@ class Sign_up : AppCompatActivity() {
                 editor.putString("email",email1)
                 editor.apply()
 
+                database2.child(name).get().addOnSuccessListener {
+                    val count =1
+                    if(it.child("UID$count").exists()){
+                        count+1
+                    }else{
+                        database2.child(name).child("UID$count").setValue(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                        editor.putString("UID_No", "UID$count")
+                    }
+                }
 
-                var intent3 = Intent(this, Personalization::class.java)
 
+
+
+
+
+
+                var intent3 = Intent(this, username::class.java)
                 startActivity(intent3)
             }else{
                 Toast.makeText(this , it.exception.toString(), Toast.LENGTH_SHORT).show()

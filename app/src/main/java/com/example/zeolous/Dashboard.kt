@@ -12,10 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zeolous.Adapter.Horizontal_RecyclerView
-import com.example.zeolous.Adapter.recomParentAdapter
+import com.example.zeolous.Adapter.recom_adapter
 import com.example.zeolous.Models.Top_course
-import com.example.zeolous.Models.recomendedChild
-import com.example.zeolous.Models.recomendedParent
 import com.example.zeolous.databinding.FragmentDashboardBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -35,12 +33,13 @@ class Dashboard : Fragment() {
     private lateinit var dialog: AlertDialog.Builder
 
     private lateinit var adapter_horz :Horizontal_RecyclerView
-    //testing
+   private lateinit var adapter_recom1 : recom_adapter
+    private lateinit var adapter_recom2 : recom_adapter
     private  lateinit var top_corse_array : ArrayList<Top_course>
     lateinit var Img_arr : Array<Int>
     lateinit var Tittle : Array<String>
     private var count = 0
-    private val parentList = ArrayList<recomendedParent>()
+
 
 
 
@@ -60,24 +59,26 @@ class Dashboard : Fragment() {
 
         preferences = this.requireActivity().getSharedPreferences("userData", Context.MODE_PRIVATE)
         val name = preferences.getString("First_name", "")
+        val Uname = preferences.getString("username", "")
         val Profile = preferences.getString("profile", "")
+        val UID = preferences.getString("Uid","")
 
-        val storageRef =  FirebaseStorage.getInstance().reference.child("Profile").child(name.toString())
+
+             // profile pic image
+        val storageRef =  FirebaseStorage.getInstance().reference.child("Profile").child(UID!!)
         val localfile = File.createTempFile("temp",".jpg")
-        binding2?.textView10?.setText("Hello\n$name!")
         storageRef.getFile(localfile).addOnSuccessListener {
-
             val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
             binding2?.image2?.setImageBitmap(bitmap)
-
-
-
-
-
-
-
         }
-//            top_corse_array.add(sampleArray[0])
+
+
+        binding2?.textView10?.setText("Hello\n$Uname!")
+
+
+        database_reference = FirebaseDatabase.getInstance().getReference("Users")
+
+
         val bottomSheet = Bottomsheet_1()
         binding2?.button3?.setOnClickListener{
             getFragmentManager()?.let { it1 -> bottomSheet.show(it1,"becoming") }
@@ -90,17 +91,60 @@ class Dashboard : Fragment() {
 
                   dataIntializa()
          adapter_horz = Horizontal_RecyclerView(top_corse_array)
-          val layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
-        binding2?.recyclerHorzX?.layoutManager=layoutManager
+          val layoutManager1 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        binding2?.recyclerHorzX?.layoutManager=layoutManager1
         binding2?.recyclerHorzX?.setHasFixedSize(true)
         binding2?.recyclerHorzX?.adapter = adapter_horz
 
-        addDataToList()
-        binding2?.recomendedParent?.setHasFixedSize(true)
-        binding2?.recomendedParent?.layoutManager = LinearLayoutManager(this.requireContext())
-        val adapter2 = recomParentAdapter(parentList)
-        binding2?.recomendedParent?.adapter = adapter2
 
+        val layoutManager2 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        adapter_recom1 = recom_adapter(top_corse_array)
+        binding2?.topCoursePersona1?.layoutManager = layoutManager2
+        binding2?.topCoursePersona1?.setHasFixedSize(true)
+        binding2?.topCoursePersona1?.adapter = adapter_recom1
+
+        database_reference.child(UID.toString()).get().addOnSuccessListener{
+            val personlization1 = it.child("personalization 1").value
+            val personlization2 = it.child("personalization 2").value
+            val personlization3 = it.child("personalization 3").value
+            val personlization4 = it.child("personalization 4").value
+            val personlization5 = it.child("personalization 5").value
+
+            binding2?.persona1?.setText("Top courses of $personlization1")
+            binding2?.persona2?.setText("Top courses of $personlization2")
+            binding2?.persona3?.setText("Top courses of $personlization3")
+            binding2?.persona4?.setText("Top courses of $personlization4")
+            binding2?.persona5?.setText("Top courses of $personlization5")
+
+        }
+
+
+        val layoutManager3 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        adapter_recom2 = recom_adapter(top_corse_array)
+        binding2?.topCoursePersona2?.layoutManager = layoutManager3
+        binding2?.topCoursePersona2?.setHasFixedSize(true)
+        binding2?.topCoursePersona2?.adapter = adapter_recom2
+
+
+        val layoutManager4 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        adapter_recom1 = recom_adapter(top_corse_array)
+        binding2?.topCoursePersona3?.layoutManager = layoutManager4
+        binding2?.topCoursePersona3?.setHasFixedSize(true)
+        binding2?.topCoursePersona3?.adapter = adapter_recom1
+
+
+        val layoutManager5 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        adapter_recom1 = recom_adapter(top_corse_array)
+        binding2?.topCoursePersona4?.layoutManager = layoutManager5
+        binding2?.topCoursePersona4?.setHasFixedSize(true)
+        binding2?.topCoursePersona4?.adapter = adapter_recom1
+
+
+        val layoutManager6 = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false )
+        adapter_recom1 = recom_adapter(top_corse_array)
+        binding2?.topCoursePersona5?.layoutManager = layoutManager6
+        binding2?.topCoursePersona5?.setHasFixedSize(true)
+        binding2?.topCoursePersona5?.adapter = adapter_recom1
 
 
     }//body close
@@ -131,66 +175,6 @@ private fun dataIntializa(){
     }
 }
 
-    private fun addDataToList() {
 
-        val childItems1 = ArrayList<recomendedChild>()
-        childItems1.add(recomendedChild("C", R.drawable.a,"papa"))
-        childItems1.add(recomendedChild("C#", R.drawable.a,"papa"))
-        childItems1.add(recomendedChild("Java",R.drawable.a,"papa"))
-        childItems1.add(recomendedChild("C++", R.drawable.a,"papa"))
-        childItems1.add(recomendedChild("C++", R.drawable.a,"papa"))
-        childItems1.add(recomendedChild("More", R.drawable.baseline_more_horiz_24,""))
-
-
-        parentList.add(recomendedParent("Game Development",  childItems1))
-
-        val childItem2 = ArrayList<recomendedChild>()
-        childItem2.add(recomendedChild("Kotlin",R.drawable.a,"papa"))
-        childItem2.add(recomendedChild("XML", R.drawable.a,"papa"))
-        childItem2.add(recomendedChild("Java", R.drawable.a,"papa"))
-        childItem2.add(recomendedChild("More", R.drawable.baseline_more_horiz_24,""))
-        parentList.add(
-           recomendedParent(
-                "Android Development",
-
-                childItem2
-            )
-        )
-        val childItem3 = ArrayList<recomendedChild>()
-        childItem3.add(recomendedChild("JavaScript", R.drawable.a,"papa"))
-        childItem3.add(recomendedChild("HTML", R.drawable.a,"papa"))
-        childItem3.add(recomendedChild("CSS", R.drawable.a,"papa"))
-        childItem3.add(recomendedChild("More", R.drawable.baseline_more_horiz_24,""))
-        parentList.add(
-            recomendedParent(
-                "Front End Web",
-
-                childItem3
-            )
-        )
-        val childItem4 = ArrayList<recomendedChild>()
-        childItem4.add(recomendedChild("Julia", R.drawable.a,"papa"))
-        childItem4.add(recomendedChild("Python", R.drawable.a,"papa"))
-        childItem4.add(recomendedChild("R", R.drawable.a,"papa"))
-        parentList.add(
-            recomendedParent(
-                "Artificial Intelligence",
-
-                childItem4
-            )
-        )
-        val childItem5 = ArrayList<recomendedChild>()
-        childItem5.add(recomendedChild("Java", R.drawable.a,"papa"))
-        childItem5.add(recomendedChild("Python", R.drawable.a,"papa"))
-        childItem5.add(recomendedChild("PHP", R.drawable.a,"papa"))
-        childItem5.add(recomendedChild("JavaScript", R.drawable.a,"papa"))
-        parentList.add(
-            recomendedParent(
-                "Back End Web",
-
-                childItem5
-            )
-        )
-    }
 
 }//classclose

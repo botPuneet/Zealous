@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,32 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font"
+        android:text="Chatbox"/>
+
+    <ImageView
+        android:id="@+id/chat_search"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_bg_blacck"
+        android:elevation="32dp"
+        android:gravity="center"
+        android:padding="5dp"
+        app:srcCompat="@drawable/baseline_search_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatbox_recycler"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="90dp"
+        tools:listitem="@layout/chat_recycler"/>
 
 </FrameLayout>

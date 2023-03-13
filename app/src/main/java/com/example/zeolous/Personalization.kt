@@ -71,7 +71,7 @@ class Personalization : AppCompatActivity() {
             } else {
                 binding_p.personal1.backgroundTintList = getColorStateList(R.color.white)
                 flag[0] = true
-                interests.removeAt(index)
+                interests.remove(personal_1)
                 index--
                 binding_p.noofSelect.setText("Select any 5 ($index/5)")
 
@@ -95,7 +95,7 @@ class Personalization : AppCompatActivity() {
                 binding_p.personal2.backgroundTintList = getColorStateList(android.R.color.white)
 
                 flag[1] = true
-                interests.removeAt(index)
+                interests.remove(personal_2)
                 index--
                 binding_p.noofSelect.setText("Select any 5 ($index/5)")
             }
@@ -118,6 +118,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal3.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[2] = true
+                interests.remove(personal_3)
                     index--
                 binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -140,6 +141,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal4.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[3] = true
+                    interests.remove(personal_4)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -162,6 +164,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal6.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[5] = true
+                    interests.remove(personal_6)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -184,6 +187,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal7.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[6] = true
+                    interests.remove(personal_7)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -206,6 +210,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal9.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[8] = true
+                    interests.remove(personal_9)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -230,6 +235,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal11.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[10] = true
+                    interests.remove(personal_11)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -251,6 +257,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal12.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[11] = true
+                    interests.remove(personal_12)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -272,6 +279,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal13.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[12] = true
+                    interests.remove(personal_13)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -293,6 +301,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal14.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[13] = true
+                    interests.remove(personal_14)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -314,6 +323,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal15.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[14] = true
+                    interests.remove(personal_15)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -335,6 +345,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal16.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[15] = true
+                    interests.remove(personal_16)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -356,6 +367,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal17.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[16] = true
+                    interests.remove(personal_17)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -377,6 +389,7 @@ class Personalization : AppCompatActivity() {
                     binding_p.personal18.backgroundTintList =
                         getColorStateList(android.R.color.white)
                     flag[17] = true
+                    interests.remove(personal_18)
                     index--
                     binding_p.noofSelect.setText("Select any 5 ($index/5)")
                 }
@@ -384,10 +397,10 @@ class Personalization : AppCompatActivity() {
             }
 
             binding_p.button2.setOnClickListener {
-
+               if(index==5){
                 preferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
                 val name = preferences.getString("Uid", "")
-                var count = 0
+                var count = 1
 
                 database = FirebaseDatabase.getInstance().getReference("Users")
                 for (i: String in interests) {
@@ -396,7 +409,10 @@ class Personalization : AppCompatActivity() {
                 }
                 var intent3 = Intent(this, Welcome::class.java)
 
-                startActivity(intent3)
+                startActivity(intent3)}
+                else{
+                    Toast.makeText(this,"Select 5 categories",Toast.LENGTH_SHORT).show()
+               }
             }
 
 

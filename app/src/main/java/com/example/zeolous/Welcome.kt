@@ -15,19 +15,14 @@ class Welcome : AppCompatActivity() {
         binding_w = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding_w.root)
         preferences = getSharedPreferences("userData", Context.MODE_PRIVATE)
-        val name = preferences.getString("First_name", "")
-        preferences = getSharedPreferences("Flag", Context.MODE_PRIVATE)
-        val editor : SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean("flag_visited",true)
-        editor.apply()
+        val name = preferences.getString("username", "")
+
 
         binding_w.textView4.setText("Hello $name!")
 
 
         binding_w.button.setOnClickListener{
-            val editor : SharedPreferences.Editor = preferences.edit()
-            editor.putBoolean("flag_visited",true)
-            editor.apply()
+
             var intent3 = Intent(this, Home::class.java)
 
             startActivity(intent3)
