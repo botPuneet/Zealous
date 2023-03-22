@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Zeolous"
         tools:targetApi="31">
         <activity
+            android:name=".notification"
+            android:exported="false" />
+        <activity
+            android:name=".SearchCourse"
+            android:exported="false" />
+        <activity
+            android:name=".ChattingProfile"
+            android:exported="false" />
+        <activity
             android:name=".chatImageUpload"
             android:exported="false" />
         <activity

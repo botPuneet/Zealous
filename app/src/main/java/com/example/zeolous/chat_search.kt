@@ -24,10 +24,12 @@ class chat_search : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding2 = ActivityChatSearchBinding.inflate(layoutInflater)
         setContentView(binding2.root)
+
         binding2.chatSearchRecycler.layoutManager = LinearLayoutManager(this)
         binding2.chatSearchRecycler.setHasFixedSize(true)
          userlist = arrayListOf<chatsearch>()
         datafeed()
+
         binding2.searchChat.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -47,18 +49,17 @@ class chat_search : AppCompatActivity() {
     private fun filterList(querry: String?) {
         if (querry!=null){
             val filteredlist = ArrayList<chatsearch>()
-            for(i in userlist)
-            {if(i.username!!.lowercase(Locale.ROOT).contains(querry)){
+            for(i in userlist){
+            if(i.username!!.lowercase(Locale.ROOT).contains(querry)){
                 filteredlist.add(i)
-            }
+            }}
 
-            }
             if(filteredlist.isEmpty()) {
                 Toast.makeText(this, "Sorry, Got no one with this name", Toast.LENGTH_SHORT).show()
-            }
-                else{
+            }else{
+
                    adapter1 = chatSeaarchAdapter(filteredlist, this@chat_search)
-                binding2.chatSearchRecycler.adapter = adapter1
+                   binding2.chatSearchRecycler.adapter = adapter1
 
                 adapter1.setOnItemClickListener(object  : chatSeaarchAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
@@ -66,7 +67,6 @@ class chat_search : AppCompatActivity() {
                         intent3.putExtra("UID",filteredlist[position].uid)
                         startActivity(intent3)
                     }
-
                 })
 
 

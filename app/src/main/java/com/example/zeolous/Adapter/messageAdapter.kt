@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,10 +46,13 @@ class messageAdapter( val context: Context,  val messages : ArrayList<message>?)
                holder.sentmsg.visibility = View.GONE
                holder.sentImg.visibility = View.VISIBLE
                Glide.with(context).load(currentmsg.Image).into(holder.sentImg)
+               holder.senttime.text = currentmsg.time.toString()
            } else {
                holder.sentmsg.visibility = View.VISIBLE
                holder.sentImg.visibility = View.GONE
+               holder.sentlayout.visibility = View.GONE
                holder.sentmsg.text = currentmsg.message.toString()
+               holder.senttime.text = currentmsg.time.toString()
            }
 
        }else {
@@ -57,10 +61,13 @@ class messageAdapter( val context: Context,  val messages : ArrayList<message>?)
                holder.recieveMsg.visibility = View.GONE
                holder.receiveImg.visibility = View.VISIBLE
                Glide.with(context).load(currentmsg.Image).into(holder.receiveImg)
+               holder.recievetime.text = currentmsg.time.toString()
            } else {
                holder.recieveMsg.visibility = View.VISIBLE
                holder.receiveImg.visibility = View.GONE
+               holder.recievelayout.visibility = View.GONE
                holder.recieveMsg.text = currentmsg.message.toString()
+               holder.recievetime.text = currentmsg.time.toString()
            }
        }
 
@@ -84,12 +91,16 @@ class messageAdapter( val context: Context,  val messages : ArrayList<message>?)
     class  SentMsgHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val sentmsg = itemView.findViewById<TextView>(R.id.textview_to_row)
         val sentImg= itemView.findViewById<ImageView>(R.id.imageView4)
+        val sentlayout = itemView.findViewById<LinearLayout>(R.id.linearLayout)
+        val senttime = itemView.findViewById<TextView>(R.id.Time)
     }
 
 
     inner class  recievedMsgHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val recieveMsg = itemView.findViewById<TextView>(R.id.textview_from_row)
         val receiveImg= itemView.findViewById<ImageView>(R.id.imageView5)
+        val recievelayout = itemView.findViewById<LinearLayout>(R.id.linearLayout1)
+        val recievetime = itemView.findViewById<TextView>(R.id.Time1)
     }
 
 

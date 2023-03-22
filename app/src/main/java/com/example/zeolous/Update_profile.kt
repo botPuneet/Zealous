@@ -36,6 +36,8 @@ class Update_profile : AppCompatActivity() {
         binding2 = ActivityUpdateProfileBinding.inflate(layoutInflater)
         setContentView(binding2.root)
          var flag_img=false
+
+
            binding2?.imageView3?.setOnClickListener {
             flag_img=true
             val intent = Intent()
@@ -43,6 +45,8 @@ class Update_profile : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent, 1)
         }
+
+
         database = FirebaseDatabase.getInstance().getReference("Users")
         database2 = FirebaseDatabase.getInstance().getReference("usernames")
         database3 = FirebaseDatabase.getInstance().getReference("username")
@@ -67,61 +71,74 @@ class Update_profile : AppCompatActivity() {
      var flagUpdata =false
 
 
+
         binding2.button5.setOnClickListener {
-            if(flag_img==true) {
-            storage = FirebaseStorage.getInstance().getReference("Profile").child(UID!!)
-            storage.putFile(imageUri)
+            if (flag_img == true) {
+                storage = FirebaseStorage.getInstance().getReference("Profile").child(UID!!)
+                storage.putFile(imageUri)
 
                 storage.downloadUrl.addOnSuccessListener {
                     database.child(UID!!).child("Image").setValue(it.toString())
                 }
-                flag_img=false
+
+                flag_img = false
             }
-             if(Full_name!=binding2.updateName.toString()){
+
+            if (Full_name != binding2.updateName.toString()) {
                 database2.child(Full_name!!).child(uidno!!).removeValue()
-               Full_name = binding2.updateName.text.toString()
-                 binding2.updateName.setText(Full_name)
-                 val arr = Full_name!!.split(" ".toRegex(), limit = 2)?.toTypedArray()
-                 val firstWord = arr?.get(0)
-                 editor.putString("First_name", firstWord)
-                 editor.putString("Full_name",Full_name)
-                 editor.apply()
-                  database.child(UID!!).child("name").setValue(Full_name)
-                 database2.child(Full_name!!).get().addOnSuccessListener {
-                     val count =1
-                     if(it.child("UID$count").exists()){
-                         count+1
-                     }else{
-                         database2.child(Full_name!!).child("UID$count").setValue(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
-                         editor.putString("UID_No", "UID$count")
-                     }
-                 }
-             }
-
-            if(Uname!=binding2.updateUname.text.toString()){
-                   val uname = binding2.updateUname.text.toString()
-                database3.child(uname!!).get().addOnSuccessListener {
-                    if(it.value=="true"){
-                        Toast.makeText(this,"Sorry Already taken",Toast.LENGTH_SHORT).show()
-
+                Full_name = binding2.updateName.text.toString()
+                binding2.updateName.setText(Full_name)
+                val arr = Full_name!!.split(" ".toRegex(), limit = 2)?.toTypedArray()
+                val firstWord = arr?.get(0)
+                editor.putString("First_name", firstWord)
+                editor.putString("Full_name", Full_name)
+                editor.apply()
+                database.child(UID!!).child("name").setValue(Full_name)
+                database2.child(Full_name!!).get().addOnSuccessListener {
+                    val count = 1
+                    if (it.child("UID$count").exists()) {
+                        count + 1
+                    } else {
+                        database2.child(Full_name!!).child("UID$count")
+                            .setValue(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                        editor.putString("UID_No", "UID$count")
                     }
-                    else{  database3.child(Uname!!).child(uidno!!).removeValue()
+                }
+            }
+
+            if (Uname != binding2.updateUname.text.toString()) {
+                val uname = binding2.updateUname.text.toString()
+                database3.child(uname!!).get().addOnSuccessListener {
+                    if (it.value == "true") {
+                        Toast.makeText(this, "Sorry Already taken", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        database3.child(Uname!!).child(uidno!!).removeValue()
                         database3.child(uname!!).setValue("true")
                         preferences = this.getSharedPreferences("userData", Context.MODE_PRIVATE)
-                        val editor : SharedPreferences.Editor = preferences.edit()
-                        editor.putString("username",uname)
+                        val editor: SharedPreferences.Editor = preferences.edit()
+                        editor.putString("username", uname)
                         editor.apply()
-                        database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).child("username").setValue(uname)
+                        database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
+                            .child("username").setValue(uname)
                         flagUpdata = true
-                    }}
-
-
-            }else{
+                    }
+                }
+            } else {
                 flagUpdata = true
             }
-            if(flagUpdata) {
-                Toast.makeText(this, "Information Updated", Toast.LENGTH_SHORT).show()
+
+            if (flagUpdata) {
+                database.child(UID!!).child("Image").get().addOnSuccessListener {
+
+                    Toast.makeText(this, "Information Updated", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Error exception", Toast.LENGTH_SHORT).show()}
+
             }
+            }
+
+
 
 
 
@@ -130,7 +147,7 @@ class Update_profile : AppCompatActivity() {
 
 
 
-    }
+
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             super.onActivityResult(requestCode, resultCode, data)

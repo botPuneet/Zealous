@@ -17,6 +17,7 @@ import com.example.zeolous.Adapter.chatSeaarchAdapter
 import com.example.zeolous.Models.chatViewModel
 import com.example.zeolous.Models.chatsearch
 import com.example.zeolous.databinding.FragmentChatboxBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 private lateinit var viewModel : chatViewModel
@@ -81,7 +82,8 @@ class Chatbox : Fragment() {
                 if(snapshot.exists()){
                     for (usersnapshot in snapshot.children){
                         val user = usersnapshot.getValue(chatsearch::class.java)
-                        userlist.add(user!!)
+                        if(user!!.uid!= FirebaseAuth.getInstance().currentUser?.uid){
+                        userlist.add(user!!)}
                     }
 //                    binding2.chatSearchRecycler.adapter = chatSeaarchAdapter(userlist, this@chat_search)
                 }

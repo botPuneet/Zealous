@@ -8,6 +8,8 @@ import android.net.Uri
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.load.Options
 import com.example.zeolous.Adapter.messageAdapter
@@ -20,6 +22,7 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
+import java.text.DateFormat
 import java.util.Calendar
 
 
@@ -34,6 +37,7 @@ class Chatting : AppCompatActivity() {
     private lateinit var messagelist : ArrayList<message>
     private lateinit var imageUri: Uri
     private lateinit var UID2 : String
+    private lateinit var UID : String
 
 
     private lateinit var messageObject:message
@@ -51,7 +55,7 @@ class Chatting : AppCompatActivity() {
 
          val count =1
         val bundle : Bundle? = intent.extras
-       val  UID = bundle!!.getString("UID")//receivers UID
+       UID = bundle!!.getString("UID")!!//receivers UID
 
 
         messagelist = ArrayList()
@@ -79,10 +83,10 @@ class Chatting : AppCompatActivity() {
             val storageRef =  FirebaseStorage.getInstance().reference.child("Profile").child(UID!!)
             val localfile = File.createTempFile("temp",".jpg")
             storageRef.getFile(localfile).addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                binding_C?.chattingImg?.setImageBitmap(bitmap)
                 database_search.child(UID2!!).child("chatting").child(UID!!).child("username").setValue(Uname)
                 database_search.child(UID2!!).child("chatting").child(UID!!).child("Image").setValue(Image)
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding_C?.chattingImg?.setImageBitmap(bitmap)
             }
         }
 
@@ -102,6 +106,9 @@ class Chatting : AppCompatActivity() {
 
                 }
                 messageAdapter.notifyDataSetChanged()
+                if(messageAdapter.itemCount>5){
+                binding_C.recyclerviewChatLog.smoothScrollToPosition(messageAdapter.itemCount-1)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -110,8 +117,12 @@ class Chatting : AppCompatActivity() {
 
         })
         messageAdapter = messageAdapter(this,messagelist)
-        binding_C.recyclerviewChatLog.layoutManager = LinearLayoutManager(this)
+        val layoutManagerX = LinearLayoutManager(this)
+
+        binding_C.recyclerviewChatLog.layoutManager = layoutManagerX
         binding_C.recyclerviewChatLog.adapter = messageAdapter
+
+
 
 
 
@@ -121,24 +132,54 @@ class Chatting : AppCompatActivity() {
                 val message = binding_C.edittextChatLog.text.toString()
 
             database_search.child(UID2!!).child("chatting").child(UID!!).child("lastMessage").setValue(message)
+                val calendar = Calendar.getInstance().time
+            val timeformat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar).toString()
 
-            val messageObject = message(message,UID2,"msg","null")
+            val messageObject = message(message,UID2,"msg","null",timeformat)
 
             mdef.child("chat").child(sentroom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
                 mdef.child("chat").child(recieveroom!!).child("messages").push().setValue(messageObject)
             }
+
             binding_C.edittextChatLog.setText("")
         }
 
 
         binding_C.sendButtonImgLog.setOnClickListener{
-            val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
-            intent.type = "image/*"
-            startActivityForResult(intent, 1)
+           val popmenu = PopupMenu(this@Chatting,it)
+            popmenu.setOnMenuItemClickListener {item->
+              when(item.itemId){
+                    R.id.image_send ->{
+                        val intent = Intent()
+                        intent.action = Intent.ACTION_GET_CONTENT
+                        intent.type = "image/*"
+                        startActivityForResult(intent, 1)
+                        true
+                    }
+                  R.id.pdf_send ->{
+                     Toast.makeText(this@Chatting,"pdf",Toast.LENGTH_SHORT).show()
+                      true
+                  }
+                  else ->false
+              }
+            }
+            popmenu.inflate(R.menu.attach)
+            try{
+                val fieldpop = PopupMenu::class.java.getDeclaredField("mPopup")
+                fieldpop.isAccessible = true
+                val mPopup = fieldpop.get(popmenu)
+                mPopup.javaClass.getDeclaredMethod("setForceShowIcon",Boolean::class.java).invoke(mPopup,true)
 
+            }catch (e : java.lang.Exception){
+
+            }finally {
+                popmenu.show()
+            }
         }
-
+ binding_C.chattingImg.setOnClickListener{
+     startActivity(Intent(applicationContext, ChattingProfile::class.java))
+     finish()
+ }
 
 
 
@@ -155,10 +196,13 @@ class Chatting : AppCompatActivity() {
                 storage = FirebaseStorage.getInstance().getReference("chats").child(calender.timeInMillis.toString()+"")
                 storage.putFile(imageUri).addOnSuccessListener{
                     storage.downloadUrl.addOnSuccessListener {
-                        val messageObject = message("",UID2!!,"IMG",it.toString())
+                        val calendar = Calendar.getInstance().time
+                        val timeformat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar).toString()
+                        val messageObject = message("",UID2!!,"IMG",it.toString(),timeformat)
 
                         mdef.child("chat").child(sentroom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
                             mdef.child("chat").child(recieveroom!!).child("messages").push().setValue(messageObject)
+                            database_search.child(UID2!!).child("chatting").child(UID!!).child("lastMessage").setValue("Image")
                         }
                     }
                 }
