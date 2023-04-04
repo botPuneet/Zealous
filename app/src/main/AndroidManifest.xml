@@ -13,6 +13,42 @@
         android:theme="@style/Theme.Zeolous"
         tools:targetApi="31">
         <activity
+            android:name=".Add_course7"
+            android:exported="false" />
+        <activity
+            android:name=".Add_course6"
+            android:exported="false" />
+        <activity
+            android:name=".add_acourse5"
+            android:exported="false" />
+        <activity
+            android:name=".Add_a_course4"
+            android:exported="false" />
+        <activity
+            android:name=".add_acourse3"
+            android:exported="false" />
+        <activity
+            android:name=".Add_a_course_2"
+            android:exported="false" />
+        <activity
+            android:name=".View_All_Courses"
+            android:exported="false" />
+        <activity
+            android:name=".Add_a_course_1"
+            android:exported="false" />
+        <activity
+            android:name=".instructor_stage3"
+            android:exported="false" />
+        <activity
+            android:name=".instructor_stage2"
+            android:exported="false" />
+        <activity
+            android:name=".instructor_stage_1"
+            android:exported="false" />
+        <activity
+            android:name=".chat_image_viewer"
+            android:exported="false" />
+        <activity
             android:name=".notification"
             android:exported="false" />
         <activity

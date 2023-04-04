@@ -2,79 +2,253 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/purple_bottom"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/black"
+    android:layout_gravity="center"
     tools:context=".zealousPlus">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content">
 
-        android:layout_marginTop="20dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font"
+        android:text="Dashboard"/>
+
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/btn_bg_blacck"
+                android:elevation="12dp"
+                android:gravity="center"
+
+                android:padding="3dp"
+                app:srcCompat="@drawable/baseline_add_24" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/btn_bg_blacck"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        android:elevation="20dp"
         >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Revenue"
+    android:textColor="@color/black"
+    android:textSize="19dp"
+    android:textStyle="bold"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:fontFamily="@font/font"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1000"
+            android:textColor="@color/themic1"
+            android:textSize="29dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+
+            android:fontFamily="@font/font"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total revenue this month"
+                android:textColor="@color/grey"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                   android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="$100"
+                android:textSize="20dp"
+                android:fontFamily="@font/font"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg_themic"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:orientation="vertical">
-
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textSize="44dp"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/font"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/white"
-        android:text="Welcome to Zelous Tube Application"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/font"
-        android:layout_marginTop="30dp"
-        android:padding="10dp"
-        android:textColor="@color/light_grey"
-        android:text="Hand-picked instructor and expertly crafted courses, designed for the modern students and entrepreneur"/>
-
-
-
-    <Button
-        android:id="@+id/btn_becomeInstructor"
-        android:layout_width="200dp"
-        android:fontFamily="@font/font"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:background="@drawable/btn_bg_blacck"
-        android:text="Are you a Instructor"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        />
-
-    <Button
-        android:id="@+id/course_explore"
-        android:layout_width="200dp"
-        android:fontFamily="@font/font"
         android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg_white"
-        android:text="Explore Courses"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        android:elevation="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Enrolment"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/font"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1200"
+            android:textColor="@color/themic1"
+            android:textSize="29dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
 
-    <ImageView
-        android:id="@+id/image_ins"
+            android:fontFamily="@font/font"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total enrollment this month"
+                android:textColor="@color/grey"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="120+"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg_themic"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/btn_bg_blacck"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        android:elevation="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average rating"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/font"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.3/5"
+            android:textColor="@color/themic1"
+            android:textSize="29dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+
+            android:fontFamily="@font/font"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average rating this month"
+                android:textColor="@color/grey"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"/>
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="4.1"
+                android:textSize="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg_themic"/>
+        </LinearLayout>
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bottomsheet"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"/>
-    </LinearLayout>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font"
+        android:text="Best Selling  Courses"/>
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/font"
+                android:text="View All"
+                android:textColor="@color/themic1"
+                android:textSize="14dp"
+                android:textStyle="bold|italic" />
+
+        </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/best_selling_recycler"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/best_selling_recycler"
+                android:layout_height="1000dp" />
+
+        </LinearLayout>
     </ScrollView>
 
 </FrameLayout>

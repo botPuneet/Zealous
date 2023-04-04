@@ -1,29 +1,28 @@
 package com.example.zeolous
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Binder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.load.Options
 import com.example.zeolous.Adapter.messageAdapter
 import com.example.zeolous.Models.chatsearch
 import com.example.zeolous.Models.message
 import com.example.zeolous.databinding.ActivityChattingBinding
-import com.google.android.gms.auth.api.signin.internal.Storage
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
 import java.text.DateFormat
-import java.util.Calendar
+import java.util.*
 
 
 class Chatting : AppCompatActivity() {
@@ -38,6 +37,7 @@ class Chatting : AppCompatActivity() {
     private lateinit var imageUri: Uri
     private lateinit var UID2 : String
     private lateinit var UID : String
+    private lateinit var chatUser  : chatsearch
 
 
     private lateinit var messageObject:message
@@ -45,6 +45,7 @@ class Chatting : AppCompatActivity() {
            private var sentroom:String?=null
            private var recieveroom:String?=null
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding_C = ActivityChattingBinding.inflate(layoutInflater)
@@ -55,7 +56,7 @@ class Chatting : AppCompatActivity() {
 
          val count =1
         val bundle : Bundle? = intent.extras
-       UID = bundle!!.getString("UID")!!//receivers UID
+         UID = bundle!!.getString("UID")!!//receivers UID
 
 
         messagelist = ArrayList()
@@ -66,6 +67,16 @@ class Chatting : AppCompatActivity() {
         val name = preferences.getString("First_name", "")
         val Profile = preferences.getString("profile", "")
          UID2 = preferences.getString("Uid", "")!!
+//        database_search.child(UID).get().addOnSuccessListener {
+//
+//            val name = it.child("username").value.toString()
+//            val image = it.child("Image").value.toString()
+//            val type = it.child("type").value.toString()
+//            val uid = it.child("uid").value.toString()
+//            chatUser = chatsearch(image,name,type,uid)
+//
+//        }
+
 
 
 
@@ -85,9 +96,26 @@ class Chatting : AppCompatActivity() {
             storageRef.getFile(localfile).addOnSuccessListener {
                 database_search.child(UID2!!).child("chatting").child(UID!!).child("username").setValue(Uname)
                 database_search.child(UID2!!).child("chatting").child(UID!!).child("Image").setValue(Image)
+                database_search.child(UID2!!).child("chatting").child(UID!!).child("uid").setValue(UID)
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding_C?.chattingImg?.setImageBitmap(bitmap)
             }
+        }
+
+        database_search.child(UID2!!).get().addOnSuccessListener {
+
+            val name = it.child("name").value.toString()
+            val type = it.child("type").value.toString()
+            val Image = it.child("Image").value.toString()
+            val Uname = it.child("username").value.toString()
+
+
+
+                database_search.child(UID!!).child("chatting").child(UID2!!).child("username").setValue(Uname)
+                database_search.child(UID!!).child("chatting").child(UID2!!).child("Image").setValue(Image)
+                database_search.child(UID!!).child("chatting").child(UID2!!).child("uid").setValue(UID2)
+
+
         }
 
 
@@ -122,6 +150,15 @@ class Chatting : AppCompatActivity() {
         binding_C.recyclerviewChatLog.layoutManager = layoutManagerX
         binding_C.recyclerviewChatLog.adapter = messageAdapter
 
+        messageAdapter.setOnItemClickListener(
+            object : messageAdapter.onItemClickListener{
+                override fun onItemClick(position: Int) {
+
+                  Toast.makeText(this@Chatting,messagelist[position].type,Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+
 
 
 
@@ -146,9 +183,9 @@ class Chatting : AppCompatActivity() {
 
 
         binding_C.sendButtonImgLog.setOnClickListener{
-           val popmenu = PopupMenu(this@Chatting,it)
+            val popmenu = PopupMenu(this@Chatting,it)
             popmenu.setOnMenuItemClickListener {item->
-              when(item.itemId){
+                when(item.itemId){
                     R.id.image_send ->{
                         val intent = Intent()
                         intent.action = Intent.ACTION_GET_CONTENT
@@ -156,12 +193,16 @@ class Chatting : AppCompatActivity() {
                         startActivityForResult(intent, 1)
                         true
                     }
-                  R.id.pdf_send ->{
-                     Toast.makeText(this@Chatting,"pdf",Toast.LENGTH_SHORT).show()
-                      true
-                  }
-                  else ->false
-              }
+                    R.id.pdf_send ->{
+                        val intent2 = Intent()
+
+                        intent2.type = "application/pdf"
+                        intent2.action = Intent.ACTION_GET_CONTENT
+                        startActivityForResult(Intent.createChooser(intent2,"select pdf"),200)
+                        true
+                    }
+                    else ->false
+                }
             }
             popmenu.inflate(R.menu.attach)
             try{
@@ -185,10 +226,11 @@ class Chatting : AppCompatActivity() {
 
 
     }
+    @SuppressLint("Range")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (data != null) {
+        if (data != null && requestCode==1) {
 
             if (data.data != null) {
                 imageUri = data.data!!
@@ -199,6 +241,52 @@ class Chatting : AppCompatActivity() {
                         val calendar = Calendar.getInstance().time
                         val timeformat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar).toString()
                         val messageObject = message("",UID2!!,"IMG",it.toString(),timeformat)
+
+                        mdef.child("chat").child(sentroom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
+                            mdef.child("chat").child(recieveroom!!).child("messages").push().setValue(messageObject)
+                            database_search.child(UID2!!).child("chatting").child(UID!!).child("lastMessage").setValue("Image")
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+
+        // for pdf
+        if (data != null  && requestCode==200) {
+
+            if (data.data != null) {
+                imageUri = data.data!!
+                val calender = Calendar.getInstance()
+
+                var result: String? = null
+                if (imageUri.getScheme().equals("content")) {
+                    val cursor: Cursor? = contentResolver.query(imageUri, null, null, null, null)
+                    try {
+                        if (cursor != null && cursor.moveToFirst()) {
+                            result =
+                                cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                        }
+                    } finally {
+                        cursor!!.close()
+                    }
+                }
+                if (result == null) {
+                    result = imageUri.getPath()
+                    val cut = result!!.lastIndexOf('/')
+                    if (cut != -1) {
+                        result = result!!.substring(cut + 1)
+                    }
+                }
+                storage = FirebaseStorage.getInstance().getReference("chats").child(calender.timeInMillis.toString()+"")
+                storage.putFile(imageUri).addOnSuccessListener{
+                    storage.downloadUrl.addOnSuccessListener {
+                        val calendar = Calendar.getInstance().time
+                        val timeformat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar).toString()
+                        val messageObject = message(result,UID2!!,"PDF",it.toString(),timeformat)
 
                         mdef.child("chat").child(sentroom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
                             mdef.child("chat").child(recieveroom!!).child("messages").push().setValue(messageObject)

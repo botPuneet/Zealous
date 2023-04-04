@@ -61,13 +61,13 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:padding="8dp"
-
                 android:background="@drawable/imput_bg"
-                android:drawableStart="@drawable/programming"
-
+                android:drawableStart="@drawable/coding"
+                android:drawablePadding="4dp"
                 android:elevation="36dp"
                 android:text="Development"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                tools:ignore="ExtraText" />
 
             <Button
                 android:id="@+id/personal2"

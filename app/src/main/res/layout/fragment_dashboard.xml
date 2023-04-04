@@ -106,7 +106,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_HorzX"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="3dp"
@@ -117,11 +117,14 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:padding="5dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
         android:fontFamily="@font/font"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/btn_bg_white"
         android:gravity="center"
+        android:textSize="12dp"
         android:elevation="10dp"
         android:text="Hurray! you have completed your task"
         android:textColor="@color/white"/>
@@ -142,7 +145,7 @@
         android:layout_height="90dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:orientation="vertical"
             android:gravity="center_vertical">
             <LinearLayout
@@ -156,8 +159,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:elevation="36dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd= "12dp"
+                    android:elevation="70dp"
+                    android:fontFamily="@font/font"
                     android:text="Finance and Accounting"
                     android:background="@drawable/imput_bg"
                     android:textColor="@color/black"
@@ -169,7 +174,9 @@
                     android:layout_height="35dp"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:layout_marginLeft="5dp"
+
+                    android:fontFamily="@font/font"
+                    android:layout_marginLeft="8dp"
                     android:elevation="36dp"
                     android:background="@drawable/imput_bg"
                     android:text="History"
@@ -178,8 +185,10 @@
                     android:id="@+id/personal16"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="8dp"
                     android:gravity="center"
                     android:padding="8dp"
+                    android:fontFamily="@font/font"
                     android:elevation="36dp"
                     android:background="@drawable/imput_bg"
                     android:text="Media"
@@ -193,7 +202,8 @@
                     android:gravity="center"
                     android:padding="8dp"
                     android:elevation="36dp"
-                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/font"
+                    android:layout_marginLeft="8dp"
                     android:background="@drawable/imput_bg"
                     android:text="Teaching and Academics"
                     android:textColor="@color/black" />
@@ -205,8 +215,10 @@
                     android:gravity="center"
                     android:padding="8dp"
                     android:elevation="36dp"
+                    android:fontFamily="@font/font"
                     android:background="@drawable/imput_bg"
                     android:text="Music"
+                    android:layout_marginLeft="8dp"
                     android:textColor="@color/black" />
                 <Button
                     android:id="@+id/personal11"
@@ -217,6 +229,8 @@
                     android:elevation="36dp"
                     android:background="@drawable/imput_bg"
                     android:text="Photography"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/font"
                     android:textColor="@color/black" />
 
                 <Button
@@ -226,130 +240,143 @@
                     android:gravity="center"
                     android:padding="8dp"
                     android:elevation="36dp"
-                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/font"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/imput_bg"
                     android:text="Videography"
                     android:textColor="@color/black" />
             </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-            <Button
-                android:id="@+id/personal1"
 
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-              android:layout_marginBottom="6dp"
-                android:background="@drawable/imput_bg"
-                android:drawableStart="@drawable/programming"
-                android:elevation="36dp"
-                android:text="Development"
-                android:textColor="@color/black" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/personal2"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/imput_bg"
-                android:elevation="36dp"
-                android:drawableLeft="@drawable/growth"
-                android:layout_marginBottom="6dp"
+                <Button
+                    android:id="@+id/personal1"
 
-                android:text="Business"
-                android:textColor="@color/black" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+
+                    android:padding="8dp"
+                    android:text="Development"
+                    android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/personal4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="IT and Software"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/personal2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Business"
+                    android:textColor="@color/black" />
 
 
-            <Button
-                android:id="@+id/personal7"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/imput_bg"
-                android:elevation="36dp"
-                android:layout_marginBottom="6dp"
-                android:text="Design"
-                android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/personal7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Design"
+                    android:textColor="@color/black" />
 
-            <Button
-                android:id="@+id/personal4"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="15dp"
-                android:elevation="36dp"
-                android:text="IT and Software"
-                android:background="@drawable/imput_bg"
-                android:textColor="@color/black"
-                android:layout_marginBottom="6dp"
-                />
-            <Button
-                android:id="@+id/personal9"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="15dp"
-                android:elevation="36dp"
-                android:text="Lifestyle"
-                android:layout_marginBottom="6dp"
-                android:background="@drawable/imput_bg"
-                android:textColor="@color/black"
-                />
 
-            <Button
-                android:id="@+id/personal18"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="10dp"
-                android:elevation="36dp"
-                android:background="@drawable/imput_bg"
-                android:text="Acting"
-                android:layout_marginBottom="6dp"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/personal13"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:elevation="36dp"
-                android:background="@drawable/imput_bg"
-                android:text="Health and Fitness"
-                android:layout_marginBottom="6dp"
-                android:textColor="@color/black"
-                style="?android:attr/buttonBarButtonStyle" />
-            <Button
-                android:id="@+id/personal6"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:elevation="36dp"
-                android:layout_marginLeft="15dp"
-                android:text="Personal Development"
-                android:layout_marginBottom="6dp"
-                android:background="@drawable/imput_bg"
-                android:textColor="@color/black" />
-        </LinearLayout>
+
+                <Button
+                    android:id="@+id/personal9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lifestyle"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/personal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Acting"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/personal13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="50dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Health and Fitness"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/personal6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/imput_bg"
+                    android:elevation="36dp"
+                    android:fontFamily="@font/font"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Personal Development"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
 
     </HorizontalScrollView>
 <ImageView
     android:layout_width="350dp"
     android:layout_height="200dp"
-
+         android:layout_gravity="center_horizontal"
        android:src="@drawable/recom"   />
 
 
@@ -380,7 +407,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topCourse_persona_1"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -399,7 +426,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topCourse_persona_2"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -418,7 +445,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topCourse_persona_3"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -437,7 +464,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topCourse_persona_4"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"
@@ -457,7 +484,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topCourse_persona_5"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="3dp"

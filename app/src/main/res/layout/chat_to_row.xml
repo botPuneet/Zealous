@@ -32,7 +32,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/shape_bg_outgoing_bubble"
-        android:elevation="40dp"
+        android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +52,45 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout02"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_bg_outgoing_bubble"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/baseline_picture_as_pdf_24w"/>
+
+        <TextView
+            android:id="@+id/pdfName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="filename.pdf"
+            android:maxWidth="240dp"
+            android:paddingStart="20dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+
+            android:fontFamily="@font/font"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/Time"
         android:layout_width="wrap_content"
@@ -62,6 +101,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout02"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

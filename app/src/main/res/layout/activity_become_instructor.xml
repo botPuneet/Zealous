@@ -4,14 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/themic1"
     android:orientation="vertical"
     tools:context=".BecomeInstructor">
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Become a Instructor Today"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center"
+
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/backCourse"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingStart="15dp"
+                    android:background="@drawable/imput_bg"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:elevation="12dp"
+                    android:src="@drawable/baseline_arrow_back_ios_24"
+                    />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="44dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/font"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="Welcome to Zelous Tube Application"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/font"
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:textColor="@color/light_grey"
+                android:text="Hand-picked instructor and expertly crafted courses, designed for the modern students and entrepreneur"/>
+
+
+
+            <Button
+                android:id="@+id/btn_becomeInstructor"
+                android:layout_width="200dp"
+                android:fontFamily="@font/font"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg_blacck"
+                android:text="Become Instructor"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+
+
+
+            <ImageView
+                android:id="@+id/image_ins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottomsheet"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

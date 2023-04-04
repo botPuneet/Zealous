@@ -27,6 +27,7 @@ private lateinit var userlist : ArrayList<chatsearch>
 lateinit var adapter: chatAdapter
 class Chatbox : Fragment() {
     private  var binding_C: FragmentChatboxBinding? = null
+    private lateinit var UID2 : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +46,6 @@ class Chatbox : Fragment() {
             startActivity(intent)
         }
         userlist = arrayListOf<chatsearch>()
-        datafeed()
         binding_C?.chatboxRecycler?.layoutManager = LinearLayoutManager(context)
         binding_C?.chatboxRecycler?.setHasFixedSize(true)
         adapter = chatAdapter(this.requireContext())
@@ -54,7 +54,7 @@ class Chatbox : Fragment() {
         preferences = this.requireActivity().getSharedPreferences("userData", Context.MODE_PRIVATE)
         val name = preferences.getString("First_name", "")
         val Profile = preferences.getString("profile", "")
-        val UID2 = preferences.getString("Uid","")
+        UID2 = preferences.getString("Uid","").toString()
 
         viewModel = ViewModelProvider(this).get(chatViewModel::class.java)
 
@@ -63,29 +63,18 @@ class Chatbox : Fragment() {
             adapter.updateUserList(it)
 
         })
-        adapter.setOnItemClickListener(object  : chatAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
 
-                var intent3 = Intent(this@Chatbox.requireContext(),Chatting::class.java)
-                intent3.putExtra("UID", userlist[position].uid)
-                startActivity(intent3)
-            }
-
-        })
-    }
-
-    private fun datafeed() {
         database_search = FirebaseDatabase.getInstance().getReference("Users")
 
-        database_search.addValueEventListener(object : ValueEventListener {
+        database_search.child(UID2).child("chatting").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                userlist.clear()
                 if(snapshot.exists()){
                     for (usersnapshot in snapshot.children){
                         val user = usersnapshot.getValue(chatsearch::class.java)
-                        if(user!!.uid!= FirebaseAuth.getInstance().currentUser?.uid){
-                        userlist.add(user!!)}
+                        userlist.add(user!!)
                     }
-//                    binding2.chatSearchRecycler.adapter = chatSeaarchAdapter(userlist, this@chat_search)
+
                 }
             }
 
@@ -95,6 +84,18 @@ class Chatbox : Fragment() {
 
         })
 
+        adapter.setOnItemClickListener(object  : chatAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+
+//                Toast.makeText(this@Chatbox.requireContext(), userlist[position].uid.toString(),Toast.LENGTH_SHORT).show()
+                var intent3 = Intent(this@Chatbox.requireContext(),Chatting::class.java)
+                intent3.putExtra("UID", userlist[position].uid)
+                startActivity(intent3)
+            }
+
+        })
     }
+
+
 
 }

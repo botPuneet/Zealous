@@ -34,11 +34,11 @@ class Bottomsheet_1 : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding2?.becomeInstructor?.setOnClickListener {
-//            var intent = Intent(this.requireContext(), BecomeInstructor::class.java)
-//
-//            startActivity(intent)
-//        }
+        binding2?.btnAddCourse?.setOnClickListener {
+            var intent = Intent(this.requireContext(), Add_a_course_1::class.java)
+
+            startActivity(intent)
+        }
     }
 
 

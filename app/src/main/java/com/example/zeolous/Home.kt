@@ -17,5 +17,6 @@ class Home : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.BottomNavMenu)
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
     }
 }

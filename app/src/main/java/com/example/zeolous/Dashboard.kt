@@ -81,10 +81,13 @@ class Dashboard : Fragment() {
 
         val bottomSheet = Bottomsheet_1()
         binding2?.button3?.setOnClickListener{
-            getFragmentManager()?.let { it1 -> bottomSheet.show(it1,"becoming") }
+//            Bottom Sheet
+//            getFragmentManager()?.let { it1 -> bottomSheet.show(it1,"becoming") }
 
 
         }
+
+
 
 
 
