@@ -12,9 +12,12 @@ import com.example.zeolous.R
 class SubTopicAdapter (private val childList: List<Topic>) :
     RecyclerView.Adapter<SubTopicAdapter.ChildViewHolder>() {
 
-    inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    inner class ChildViewHolder(itemView: View,) : RecyclerView.ViewHolder(itemView) {
 
         val title: TextView = itemView.findViewById(R.id.topic555)
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {

@@ -13,6 +13,32 @@
         android:theme="@style/Theme.Zeolous"
         tools:targetApi="31">
         <activity
+            android:name=".tempp"
+            android:exported="false" />
+        <activity
+            android:name=".temp"
+            android:exported="false"
+            android:label="@string/title_activity_temp"
+            android:theme="@style/Theme.Zeolous.NoActionBar" />
+        <activity
+            android:name=".viewCourse_3"
+            android:exported="false" />
+        <activity
+            android:name=".viewCourse_2"
+            android:exported="false" />
+        <activity
+            android:name=".viewCourse"
+            android:exported="false" />
+        <activity
+            android:name=".add_course10"
+            android:exported="false" />
+        <activity
+            android:name=".add_course9"
+            android:exported="false" />
+        <activity
+            android:name=".Add_course8"
+            android:exported="false" />
+        <activity
             android:name=".Add_course7"
             android:exported="false" />
         <activity

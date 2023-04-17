@@ -15,4 +15,13 @@
         <item name="android:textColorHint">#D8B3A6C1</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Zeolous.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Zeolous.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Zeolous.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

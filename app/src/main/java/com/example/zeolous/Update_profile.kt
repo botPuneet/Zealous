@@ -25,7 +25,7 @@ class Update_profile : AppCompatActivity() {
     private lateinit var database3: DatabaseReference
     lateinit var preferences: SharedPreferences
     private lateinit var storage: StorageReference
-
+    var flag_img=false
     private lateinit var imageUri: Uri
 
 
@@ -35,7 +35,7 @@ class Update_profile : AppCompatActivity() {
 
         binding2 = ActivityUpdateProfileBinding.inflate(layoutInflater)
         setContentView(binding2.root)
-         var flag_img=false
+
 
 
            binding2?.imageView3?.setOnClickListener {
@@ -68,7 +68,6 @@ class Update_profile : AppCompatActivity() {
             binding2?.imageView3?.setImageBitmap(bitmap)
         }
 
-     var flagUpdata =false
 
 
 
@@ -79,20 +78,27 @@ class Update_profile : AppCompatActivity() {
 
                 storage.downloadUrl.addOnSuccessListener {
                     database.child(UID!!).child("Image").setValue(it.toString())
+                    Toast.makeText(this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+
+                    Toast.makeText(this, "failed to upload thee image", Toast.LENGTH_SHORT).show()
                 }
 
                 flag_img = false
             }
 
-            if (Full_name != binding2.updateName.toString()) {
+
+            database.child(UID!!).child("name").get().addOnSuccessListener {
+
+                if ( it.value.toString()!= binding2.updateName.text.toString()) {
+
                 database2.child(Full_name!!).child(uidno!!).removeValue()
                 Full_name = binding2.updateName.text.toString()
                 binding2.updateName.setText(Full_name)
-                val arr = Full_name!!.split(" ".toRegex(), limit = 2)?.toTypedArray()
-                val firstWord = arr?.get(0)
-                editor.putString("First_name", firstWord)
+
                 editor.putString("Full_name", Full_name)
                 editor.apply()
+
                 database.child(UID!!).child("name").setValue(Full_name)
                 database2.child(Full_name!!).get().addOnSuccessListener {
                     val count = 1
@@ -103,17 +109,21 @@ class Update_profile : AppCompatActivity() {
                             .setValue(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
                         editor.putString("UID_No", "UID$count")
                     }
+                    Toast.makeText(this, "Name updated Successfully", Toast.LENGTH_SHORT).show()
                 }
-            }
 
-            if (Uname != binding2.updateUname.text.toString()) {
+
+            }
+            }
+            if (Uname.toString() != binding2.updateUname.text.toString()) {
+
                 val uname = binding2.updateUname.text.toString()
                 database3.child(uname!!).get().addOnSuccessListener {
                     if (it.value == "true") {
-                        Toast.makeText(this, "Sorry Already taken", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Sorry the username is Already taken", Toast.LENGTH_SHORT).show()
 
                     } else {
-                        database3.child(Uname!!).child(uidno!!).removeValue()
+                        database3.child(Uname!!).removeValue()
                         database3.child(uname!!).setValue("true")
                         preferences = this.getSharedPreferences("userData", Context.MODE_PRIVATE)
                         val editor: SharedPreferences.Editor = preferences.edit()
@@ -121,28 +131,19 @@ class Update_profile : AppCompatActivity() {
                         editor.apply()
                         database.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid())
                             .child("username").setValue(uname)
-                        flagUpdata = true
+                        Toast.makeText(this, "Username Updated Successfully", Toast.LENGTH_SHORT).show()
                     }
+
                 }
-            } else {
-                flagUpdata = true
-            }
-
-            if (flagUpdata) {
-                database.child(UID!!).child("Image").get().addOnSuccessListener {
-
-                    Toast.makeText(this, "Information Updated", Toast.LENGTH_SHORT).show()
-                }.addOnFailureListener {
-                    Toast.makeText(this, "Error exception", Toast.LENGTH_SHORT).show()}
-
-            }
             }
 
 
 
 
 
-        }
+
+
+        }}
 
 
 

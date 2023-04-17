@@ -73,6 +73,12 @@ class zealousPlus : Fragment() {
          }
 //
         dataIntializa()
+
+        binding.viewall.setOnClickListener{
+            val intent  = Intent(this@zealousPlus.requireContext(), View_All_Courses::class.java)
+            startActivity(intent)
+        }
+
         val layoutManager2 = LinearLayoutManager(this.requireContext() )
         adapter1= best_selling_Adapter(best_corse_array)
         binding?.bestSellingRecycler?.layoutManager = layoutManager2

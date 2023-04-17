@@ -1,11 +1,10 @@
 package com.example.zeolous
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zeolous.Adapter.NestedTopicAdapter
-import com.example.zeolous.Models.Subtopic
 import com.example.zeolous.Models.Topic
 import com.example.zeolous.Models.nestedTopic
 import com.example.zeolous.databinding.ActivityAddCourse7Binding
@@ -31,6 +30,14 @@ class Add_course7 : AppCompatActivity() {
         binding_a7.recyclerObjective.layoutManager = LinearLayoutManager(this)
 
         datafeed()
+
+        binding_a7.button9.setOnClickListener {
+            var intent = Intent(this, add_course10::class.java)
+            intent.putExtra("uidc",UIDC)
+            intent.putExtra("category",category)
+
+            startActivity(intent)
+        }
 
 
     }
@@ -58,8 +65,19 @@ class Add_course7 : AppCompatActivity() {
 
                                  }
                                  items.add(nestedTopic(it.child("content").child("T$i").child("topic").value.toString(), items2))
-                                 val adapter = NestedTopicAdapter(items)
+                                 val adapter = NestedTopicAdapter(this@Add_course7,items)
                                  binding_a7.recyclerObjective.adapter = adapter
+                                 adapter.setOnItemClickListener(object : NestedTopicAdapter.onItemClickListener{
+                                     override fun onItemClick(position: Int) {
+                                         val intent  = Intent(this@Add_course7, Add_course8::class.java)
+                                         intent.putExtra("uidc",UIDC)
+                                         intent.putExtra("category",category)
+                                         intent.putExtra("position",position.toString())
+                                         startActivity(intent)
+
+                                     }
+                                 }
+                                 )
                              }
                          }
 

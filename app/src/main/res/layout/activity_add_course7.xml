@@ -7,6 +7,14 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".Add_course7">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -32,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/font"
-        android:text="(By clicking on Subtopic Add content for it)"
+        android:text="(By clicking on Topic Add content for it)"
         android:textColor="@color/grey"
         android:textSize="14dp"
         android:layout_marginTop="0dp"
@@ -41,6 +49,17 @@
         />
 
 
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerObjective"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/n_topic_recycler"
+        />
 
     <Button
         android:id="@+id/button9"
@@ -51,22 +70,6 @@
         android:layout_marginTop="10dp"
         android:text="Next"
         android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/font"
-        android:text="Topics of your courses"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerObjective"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        tools:listitem="@layout/n_topic_recycler"
-        />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
