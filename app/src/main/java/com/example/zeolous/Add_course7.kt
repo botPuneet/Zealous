@@ -3,6 +3,7 @@ package com.example.zeolous
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zeolous.Adapter.NestedTopicAdapter
 import com.example.zeolous.Models.Topic
@@ -32,9 +33,10 @@ class Add_course7 : AppCompatActivity() {
         datafeed()
 
         binding_a7.button9.setOnClickListener {
-            var intent = Intent(this, add_course10::class.java)
-            intent.putExtra("uidc",UIDC)
-            intent.putExtra("category",category)
+            var intent = Intent(this, Home::class.java)
+            Toast.makeText(this, "Your course addded Successfully", Toast.LENGTH_SHORT).show()
+//            intent.putExtra("uidc",UIDC)
+//            intent.putExtra("category",category)
 
             startActivity(intent)
         }

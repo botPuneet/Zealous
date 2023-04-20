@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="700dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    android:elevation="10dp"
+    android:background="@drawable/btn_bg_blacck"
+    android:layout_height="200dp">
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:text="Do you really want to buy this course @30?"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="17dp"
+        android:textStyle="bold"/>
+
+
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg_white"
+            android:text="confirm"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"/>
+
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

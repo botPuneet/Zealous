@@ -36,8 +36,7 @@ class Add_a_course_1 : AppCompatActivity() {
         setContentView(binding_a1.root)
 
         mdef = FirebaseDatabase.getInstance().getReference()
-        var items = listOf("Finance and Accounting", "History", "Development", "IT and Software", "Media", "Business","Teaching and academy", "Design",
-                            "Lifestyle","Music", "Dance", "Acting", "none" )
+        var items = listOf("CSAI", "COE", "CSDS", "EE", "ECE", "EIOT", "IT", "ITNS", "ICE", "MCE", "ME", "BT", "others" )
 
         var items2 = listOf("English", "hindi","Tamil","Telugu","Gujrati","Marathi","Punjabi" )
 
@@ -139,10 +138,16 @@ class Add_a_course_1 : AppCompatActivity() {
                     addd_c = addCourse1(UIDC, it.toString(),title,description, category1, language, access )
 
                     mdef.child("courses").child(category1.toString()).child(UIDC!!).setValue(addd_c)
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("enroll").setValue("0")
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("rating").setValue("0")
                     mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                         val no = it.child("courseNumber").value.toString()
                         var count = Integer.parseInt(no)
                         count++
+                        mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
+                            val name = it.child("name").value.toString()
+                            mdef.child("courses").child(category1.toString()).child(UIDC!!).child("creator").setValue(name)
+                        }
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).child("courseNumber").setValue(count)
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).child("courses").child("C$count").child("Category").setValue(category1)
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).child("courses").child("C$count").child("ID").setValue(UIDC)

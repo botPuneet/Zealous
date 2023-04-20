@@ -25,6 +25,7 @@ class Welcome : AppCompatActivity() {
 
             var intent3 = Intent(this, Home::class.java)
 
+
             startActivity(intent3)
         }
 

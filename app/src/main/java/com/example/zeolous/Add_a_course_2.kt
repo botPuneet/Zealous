@@ -39,6 +39,11 @@ class Add_a_course_2 : AppCompatActivity() {
             binding_a2?.recyclerObjective?.layoutManager = layoutManager2
             binding_a2?.recyclerObjective?.setHasFixedSize(false)
             binding_a2?.recyclerObjective?.adapter = adapter1
+            adapter1.setOnItemClickListener(object : objectiveAdapter.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    super.onItemClick(position)
+                }
+            })
 
         }
         val size1 = items.size

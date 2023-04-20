@@ -82,7 +82,7 @@
            android:layout_marginLeft="6dp"
            android:layout_marginRight="100dp"
 
-           app:srcCompat="@drawable/baseline_notifications_24"
+           app:srcCompat="@drawable/baseline_account_balance_wallet_24"
            />
 
 
@@ -126,7 +126,7 @@
         android:gravity="center"
         android:textSize="12dp"
         android:elevation="10dp"
-        android:text="Hurray! you have completed your task"
+        android:text="Student Panel"
         android:textColor="@color/white"/>
 
     <TextView
@@ -413,83 +413,83 @@
         android:layout_marginTop="3dp"
         android:background="@color/white"
         tools:listitem="@layout/topcourse_personal_recycler"/>
-    <TextView
-        android:id="@+id/persona_2"
-        android:fontFamily="@font/font"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top courses of person1"
-        android:textColor="@color/black"
-        android:layout_marginLeft="35dp"
-        android:textSize="18dp"
-        android:layout_marginTop="5dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topCourse_persona_2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        tools:listitem="@layout/topcourse_personal_recycler"/>
-    <TextView
-        android:id="@+id/persona_3"
-        android:fontFamily="@font/font"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top courses of person1"
-        android:textColor="@color/black"
-        android:layout_marginLeft="35dp"
-        android:textSize="18dp"
-        android:layout_marginTop="10dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topCourse_persona_3"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        tools:listitem="@layout/topcourse_personal_recycler"/>
-    <TextView
-        android:id="@+id/persona_4"
-        android:fontFamily="@font/font"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top courses of person1"
-        android:textColor="@color/black"
-        android:layout_marginLeft="35dp"
-        android:textSize="18dp"
-        android:layout_marginTop="10dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topCourse_persona_4"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        tools:listitem="@layout/topcourse_personal_recycler"/>
-    <TextView
-        android:id="@+id/persona_5"
-        android:fontFamily="@font/font"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top courses of person1"
-        android:textColor="@color/black"
-        android:layout_marginLeft="35dp"
-        android:textSize="18dp"
-        android:layout_marginTop="10dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/persona_2"-->
+<!--        android:fontFamily="@font/font"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Top courses of person1"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginLeft="35dp"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginTop="5dp"/>-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/topCourse_persona_2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginEnd="5dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:background="@color/white"-->
+<!--        tools:listitem="@layout/topcourse_personal_recycler"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/persona_3"-->
+<!--        android:fontFamily="@font/font"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Top courses of person1"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginLeft="35dp"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginTop="10dp"/>-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/topCourse_persona_3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginEnd="5dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:background="@color/white"-->
+<!--        tools:listitem="@layout/topcourse_personal_recycler"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/persona_4"-->
+<!--        android:fontFamily="@font/font"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Top courses of person1"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginLeft="35dp"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginTop="10dp"/>-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/topCourse_persona_4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginEnd="5dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:background="@color/white"-->
+<!--        tools:listitem="@layout/topcourse_personal_recycler"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/persona_5"-->
+<!--        android:fontFamily="@font/font"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Top courses of person1"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginLeft="35dp"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginTop="10dp"/>-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topCourse_persona_5"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        tools:listitem="@layout/topcourse_personal_recycler"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/topCourse_persona_5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginEnd="5dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:background="@color/white"-->
+<!--        tools:listitem="@layout/topcourse_personal_recycler"/>-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

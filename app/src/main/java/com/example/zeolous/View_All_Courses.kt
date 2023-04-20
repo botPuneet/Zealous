@@ -62,6 +62,7 @@ class View_All_Courses : AppCompatActivity() {
                                     val intent  = Intent(this@View_All_Courses, viewCourse::class.java)
                                     intent.putExtra("category",viewC2[position].image.toString())
                                     intent.putExtra("Uid",viewC2[position].name.toString())
+                                    intent.putExtra("access", "1")
                                     startActivity(intent)
                                 }
                             })

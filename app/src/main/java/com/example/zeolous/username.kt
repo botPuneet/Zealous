@@ -36,7 +36,7 @@ class username : AppCompatActivity() {
                     editor.putString("username",name)
                     editor.apply()
                     dbms2.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).child("username").setValue(name)
-                var intent3 = Intent(this,Personalization::class.java)
+                var intent3 = Intent(this,personilazation2::class.java)
                 startActivity(intent3)
 
             }}

@@ -73,13 +73,14 @@ class add_course9 : AppCompatActivity() {
             Lflag = true
         }
         binding_a9.noneup.setOnClickListener {
-            var st = "None"
-            binding_a9.pdfView.text = st
-            Nflag = true
+            dbms.child("type").setValue("ylink")
+            binding_a9.textView12dfgds.visibility = View.VISIBLE
+            binding_a9.editTextTextMultiLineesd.visibility = View.VISIBLE
+            Lflag = true
         }
 
         binding_a9.button9.setOnClickListener {
-            if(Nflag==false && Lflag ==false){
+            if(Lflag ==false){
             val calender = Calendar.getInstance()
             storage = FirebaseStorage.getInstance().getReference("Courses").child(FirebaseAuth.getInstance().currentUser!!.uid).child(UIDC!!)
                 .child("subtopic")

@@ -24,7 +24,7 @@ class Horizontal_RecyclerView(private val topcourse : ArrayList<Top_course>) : R
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
        val currentItem = topcourse[position]
         holder.top_Title.text = currentItem.title
-        holder.Img.setImageResource(currentItem.img)
+//        holder.Img.setImageResource(currentItem.img)
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
               val Img :ImageView =itemView.findViewById(R.id.top_IMG)

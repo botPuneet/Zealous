@@ -169,7 +169,7 @@
                 android:background="@drawable/btn_bg_themic"
                 android:elevation="10dp"
                 android:paddingStart="10dp"
-                android:text="None"
+                android:text="youtube Video link"
                 android:layout_height="wrap_content"
 
                 />

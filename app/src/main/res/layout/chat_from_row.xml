@@ -15,6 +15,7 @@
         android:background="@drawable/shape_bg_incoming_bubble"
         android:maxWidth="240dp"
         android:paddingStart="15dp"
+        android:elevation="5dp"
         android:paddingTop="8dp"
         android:paddingEnd="12dp"
         android:paddingBottom="8dp"

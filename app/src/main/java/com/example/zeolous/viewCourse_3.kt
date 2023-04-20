@@ -1,11 +1,12 @@
 package com.example.zeolous
 
+import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.zeolous.Adapter.objectiveAdapter
 import com.example.zeolous.databinding.ActivityViewCourse3Binding
@@ -62,11 +63,32 @@ class viewCourse_3 : AppCompatActivity() {
 
             if(type =="pdf"){
                 val content = it.child("subtopicContent").child("T$position1").child("S$position2").child("content").value.toString()
-                var uri = Uri.parse(content)
+                binding_v3.pdf.visibility = View.VISIBLE
+               binding_v3.pdf.setOnClickListener {
+
+                    val value = Uri.parse(content)
+                val intent = Intent(Intent.ACTION_VIEW, value)
+                  intent.type = "application/pdf"
+                // start activity
+
+                // start activity
+                startActivity(Intent.createChooser(intent, "Open in"))}
 
             }
 
             if(type =="link"){
+
+
+                val content = it.child("subtopicContent").child("T$position1").child("S$position2").child("content").value.toString()
+                binding_v3.link.visibility = View.VISIBLE
+                binding_v3.link.setOnClickListener {
+                val value = Uri.parse(content)
+                val intent = Intent(Intent.ACTION_VIEW, value)
+
+                // start activity
+
+                // start activity
+                startActivity(intent)}
 
             }
 

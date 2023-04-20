@@ -41,13 +41,23 @@
                 />
 
             <TextView
+                android:id="@+id/ratingg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"
                 android:fontFamily="@font/font"
                 android:textColor="@color/black"
-                android:text="4.5/5"/>
+                android:text="4.5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/font"
+                android:textColor="@color/black"
+                android:text="/5"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -97,22 +107,21 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/baseline_groups_24"/>
+
         <TextView
+            android:id="@+id/enrolll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:fontFamily="@font/font2"
             android:textColor="@color/black"
-            android:fontFamily="@font/font"
-            android:text="6"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:textSize="15dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/font"
-            android:text=" weeks"/>
+            android:layout_marginStart="5dp"
+            android:text="500"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,7 +130,16 @@
                 android:fontFamily="@font/font2"
                 android:textColor="@color/black"
                 android:layout_marginStart="50dp"
-                android:text="₹1000/-"/>
+                android:text="30"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/dollar"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
     </LinearLayout>
         </LinearLayout>
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".enterRefferal">
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:textSize="25dp"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        android:textStyle="bold"
+        android:text="Enter Referral code" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:fontFamily="@font/font"
+        android:textColor="@color/grey"
+        android:gravity="center"
+        android:text="Enter a referral code to earn coins" />
+
+    <EditText
+        android:id="@+id/imageView"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:hint="referral code"
+        android:background="@drawable/imput_bg"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="140dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle2"
+        >
+        <Button
+            android:id="@+id/button"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg_white"
+            android:text="next"
+            android:textColor="@color/white"
+
+            android:layout_gravity="center
+"
+
+            />
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+           android:gravity="center"
+            android:text="Skip"
+            android:textSize="17dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+
+            android:layout_gravity="center
+"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>

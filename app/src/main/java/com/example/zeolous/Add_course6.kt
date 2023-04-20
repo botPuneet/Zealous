@@ -42,6 +42,13 @@ class Add_course6 : AppCompatActivity() {
             binding_a6?.recyclerObjective?.setHasFixedSize(false)
             binding_a6?.recyclerObjective?.adapter = adapter1
 
+
+            adapter1.setOnItemClickListener(object : objectiveAdapter.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    super.onItemClick(position)
+                }
+            })
+
         }
         var count = 0
         binding_a6.button9.setOnClickListener {

@@ -78,41 +78,122 @@
                 android:layout_marginTop="20dp"
                 />
         </LinearLayout>
-        <Button
-            android:id="@+id/language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg_blacck"
-             android:text="English"
-            android:elevation="0dp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:drawableStart="@drawable/baseline_language_24"
-            />
 
-        <Button
-            android:id="@+id/access"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg_blacck"
-            android:text="18 weeks"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:drawableStart="@drawable/baseline_access_time_filled_24"
-            />
+        <TextView
 
-        <Button
-            android:id="@+id/rating"
+            android:id="@+id/descp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg_blacck"
-            android:text="0/5"
-            android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+            android:text="Introduction"
             android:textColor="@color/black"
+            android:textSize="17dp"
             android:layout_marginLeft="20dp"
-            android:drawableStart="@drawable/baseline_star_border_24"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="2dp"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal">
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="20dp"
+              android:src="@drawable/baseline_language_24"
+              />
+          <TextView
+              android:id="@+id/language"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="English"
+              android:textColor="@color/black"
+              android:fontFamily="@font/font"
+              android:layout_marginLeft="10dp"
+              android:textSize="15dp"/>
+      </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/baseline_access_time_filled_24"
+                />
+            <TextView
+                android:id="@+id/access"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 weeks"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/baseline_groups_24"
+                />
+            <TextView
+                android:id="@+id/students"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/favourite"
+                />
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"/>
+            <TextView
+                android:id="@+id/ratingdsf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/5"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:layout_marginLeft="1dp"
+                android:textSize="15dp"/>
+        </LinearLayout>
         <TextView
             android:id="@+id/creatohgj"
             android:layout_width="wrap_content"
@@ -171,7 +252,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tpR"
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="400dp"
             tools:listitem="@layout/topic_recyler2"/>
 
 
@@ -180,15 +261,37 @@
 
 </LinearLayout>
 
-    <Button
+    <LinearLayout
+        android:id="@+id/buttonBuy"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/btn_bg_themic"
-        android:textColor="@color/white"
-        android:textSize="20dp"
         android:layout_gravity="bottom"
-        android:fontFamily="@font/font"
+     android:gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Price : 200  ( INR )"/>
+
+        >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="Buy @30"
+
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/dollar"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+
+
+    </LinearLayout>
 </LinearLayout>
