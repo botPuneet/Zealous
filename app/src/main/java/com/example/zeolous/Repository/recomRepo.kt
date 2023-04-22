@@ -26,29 +26,29 @@ class recomRepo {
 
 
     fun loadcourse(userList : MutableLiveData<List<Top_course>>){
+        var _userList :ArrayList<Top_course>
+        _userList = arrayListOf<Top_course>()
         databaseReference2.child(auth).get().addOnSuccessListener {
             Branch = it.child("branch").value.toString()
 
             databaseReference.child(Branch).addValueEventListener(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    _userList.clear()
+                    if(snapshot.exists()){
 
-                    try {
+                        for(topshot in snapshot.children){
 
-                        val _userList: List<Top_course> = snapshot.children.map { dataSnapshot ->
-
-                            dataSnapshot.getValue(Top_course::class.java)!!
-
+                          if(topshot.child("setup").value.toString()=="1"){
+                          var got =topshot.getValue(Top_course::class.java)
+                        if (got != null) {
+                            _userList.add(got)
                         }
-
-                        userList.postValue(_userList)
-
-                    } catch (e: Exception) {
-
-
                     }
+                     }
+                      }
 
-
+                    userList.postValue(_userList)
                 }
 
                 override fun onCancelled(error: DatabaseError) {

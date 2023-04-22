@@ -18,10 +18,12 @@ class Add_course7 : AppCompatActivity() {
     var UIDC : String?=null
     var category : String?=null
     private lateinit var dbms : DatabaseReference
+    private lateinit var dbms2 : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding_a7 = ActivityAddCourse7Binding.inflate(layoutInflater)
         setContentView(binding_a7.root)
+        dbms2 = FirebaseDatabase.getInstance().getReference()
         val bundle : Bundle? = intent.extras
         UIDC = bundle!!.getString("uidc")!!
         category = bundle!!.getString("category")!!
@@ -35,9 +37,8 @@ class Add_course7 : AppCompatActivity() {
         binding_a7.button9.setOnClickListener {
             var intent = Intent(this, Home::class.java)
             Toast.makeText(this, "Your course addded Successfully", Toast.LENGTH_SHORT).show()
-//            intent.putExtra("uidc",UIDC)
-//            intent.putExtra("category",category)
-
+//
+            dbms2.child("courses").child(category.toString()).child(UIDC!!).child("setup").setValue("1")
             startActivity(intent)
         }
 
@@ -81,6 +82,7 @@ class Add_course7 : AppCompatActivity() {
                                  }
                                  )
                              }
+
                          }
 
                          override fun onCancelled(error: DatabaseError) {

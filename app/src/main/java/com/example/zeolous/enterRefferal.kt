@@ -12,34 +12,50 @@ import com.google.firebase.database.FirebaseDatabase
 class enterRefferal : AppCompatActivity() {
     private lateinit var binding_re : ActivityEnterRefferalBinding
     private lateinit var dbms : DatabaseReference
+    private lateinit var dbms2 : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding_re = ActivityEnterRefferalBinding.inflate(layoutInflater)
         setContentView(binding_re.root)
 
         dbms = FirebaseDatabase.getInstance().getReference("Users")
+        dbms2 = FirebaseDatabase.getInstance().getReference("username")
+
 
         binding_re.button.setOnClickListener {
-            var uid2 = binding_re.imageView.text.toString()
-            dbms.child(uid2).get().addOnSuccessListener {
-                val coind = it.child("coins").value.toString()
+            var uid1 = binding_re.imageView.text.toString()
 
-                val coins = Integer.parseInt(coind)
-                dbms.child(uid2).child("coins").setValue((coins+20).toString())
-                dbms.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
-                    val coind = it.child("coins").value.toString()
-
-                    val coins = Integer.parseInt(coind)
-                    dbms.child(FirebaseAuth.getInstance().currentUser!!.uid).child("coins").setValue((coins+20).toString())
+            dbms2.child(uid1).get().addOnSuccessListener {
+                var uid2 = it.value.toString()
+                var checkFlag =true
+                if(uid2==null){
+                    checkFlag=false
                 }
-                var intent3 = Intent(this, Welcome::class.java)
+                 if(checkFlag==true){
 
-                startActivity(intent3)
-            }.addOnFailureListener{
-                Toast.makeText(this, "Invalid referral code", Toast.LENGTH_SHORT).show()
+
+                    dbms.child(uid2).get().addOnSuccessListener {
+                        val coind = it.child("coins").value.toString()
+
+                        val coins = Integer.parseInt(coind)
+                        dbms.child(uid2).child("coins").setValue((coins + 50).toString())
+                        dbms.child(FirebaseAuth.getInstance().currentUser!!.uid).get()
+                            .addOnSuccessListener {
+                                val coind = it.child("coins").value.toString()
+
+                                val coins = Integer.parseInt(coind)
+                                dbms.child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                    .child("coins")
+                                    .setValue((coins + 50).toString())
+                            }
+                        var intent3 = Intent(this, Welcome::class.java)
+
+                        startActivity(intent3)
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Invalid referral code", Toast.LENGTH_SHORT).show()
+                    }
+                 }
             }
-
-
         }
 
         binding_re.skip.setOnClickListener{

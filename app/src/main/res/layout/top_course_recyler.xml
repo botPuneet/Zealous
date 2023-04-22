@@ -33,40 +33,35 @@
             android:fontFamily="@font/font2"
                  android:textStyle="bold"
             android:text="Stock market"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/top_Descpdsvsd"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:text="By"/>
         <TextView
             android:id="@+id/top_Descp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              android:layout_marginTop="3dp"
+            android:layout_marginLeft="3dp"
             android:textSize="15dp"
             android:fontFamily="@font/font"
                  android:gravity="center"
-            android:text="By Arnav gupta"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="3dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duration :"
-            android:textSize="15dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/font"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6 weeks"
-            android:textColor="@color/black"
-            android:fontFamily="@font/font"
-            android:textSize="15dp"
-           />
+            android:text="Arnav gupta"/>
 
-    </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,13 +79,14 @@
                 />
 
             <TextView
+                android:id="@+id/rankk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"
                 android:fontFamily="@font/font"
                 android:textColor="@color/black"
-                android:text="4.5/5"/>
+                android:text="4.5"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,9 +94,26 @@
                 android:textSize="15dp"
                 android:fontFamily="@font/font"
                 android:textColor="@color/black"
-                android:layout_marginStart="25dp"
+                android:text="/5"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_groups_24"/>
+
+            <TextView
+                android:id="@+id/enrolll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="₹1000/-"/>
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/font2"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"
+                android:text="500"/>
 
 
     </LinearLayout>

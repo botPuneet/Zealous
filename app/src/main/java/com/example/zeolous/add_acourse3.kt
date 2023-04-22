@@ -42,6 +42,7 @@ class add_acourse3 : AppCompatActivity() {
         binding_a3.button7.setOnClickListener {
             val text = binding_a3.editTextTextMultiLine.text.toString()
             dbms.child(category).child(UIDC).child("introArticle").setValue(text)
+
             val calender = Calendar.getInstance()
             storage = FirebaseStorage.getInstance().getReference("Courses").child(FirebaseAuth.getInstance().currentUser!!.uid).child(UIDC).child(calender.timeInMillis.toString()+"")
             storage.putFile(videoUri).addOnSuccessListener{

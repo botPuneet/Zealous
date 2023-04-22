@@ -21,10 +21,12 @@ class Wallet : AppCompatActivity() {
          dbms = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
         dbms.get().addOnSuccessListener {
             var coins = it.child("coins").value.toString()
+            var username = it.child("username").value.toString()
             binding_W.coinss.text = coins
+            binding_W.refff.text = username
         }
 
-        binding_W.refff.text = FirebaseAuth.getInstance().currentUser!!.uid.toString()
+
        binding_W.clippp.setOnClickListener {
            val clipboard: ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
            val clip: ClipData = ClipData.newPlainText("EditText", binding_W.refff.text.toString())

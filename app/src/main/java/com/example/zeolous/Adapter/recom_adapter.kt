@@ -16,7 +16,7 @@ class recom_adapter (private val context : Context) : RecyclerView.Adapter<recom
     private val topCourse = ArrayList<Top_course>()
 
     private lateinit var mListener : onItemClickListener
-    private val userList = ArrayList<chatRecycler>()
+
 
     interface onItemClickListener{
         fun onItemClick(position: Int){

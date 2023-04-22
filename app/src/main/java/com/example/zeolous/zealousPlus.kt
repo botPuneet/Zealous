@@ -76,6 +76,7 @@ class zealousPlus : Fragment() {
 
         binding.viewall.setOnClickListener{
             val intent  = Intent(this@zealousPlus.requireContext(), View_All_Courses::class.java)
+            intent.putExtra("access", "1")
             startActivity(intent)
         }
 

@@ -25,7 +25,34 @@
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         tools:listitem="@layout/view_course_recycler"
         android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/nimg"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        android:src="@drawable/empty"/>
+
+    <TextView
+        android:id="@+id/nText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:padding="10dp"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="@font/font"
+        android:text="Nothing to see here Buy some courses"/>
 
 </LinearLayout>

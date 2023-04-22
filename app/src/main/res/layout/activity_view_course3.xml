@@ -114,13 +114,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_white"
-        android:text="Open Link"
+        android:text="View pdf"
         android:backgroundTint="@color/black"
         android:visibility="gone"
         android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:id="@+id/lllink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+             />
+    </LinearLayout>
 
 
 

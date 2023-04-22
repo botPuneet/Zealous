@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="20dp"
           android:orientation="vertical"
     android:background="@color/white"
     tools:context=".viewCourse">
 <LinearLayout
+    android:id="@+id/panel"
     android:layout_width="match_parent"
-    android:layout_height="700dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginBottom="10dp"
     >
@@ -29,13 +31,13 @@
             android:orientation="horizontal">
         <TextView
             android:id="@+id/tittle"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font"
             android:text="Add a Course "
             android:gravity="center"
-           android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp"
+           android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:textColor="@color/black"
             android:textSize="24dp"
             />
@@ -47,7 +49,7 @@
                 android:background="@drawable/btn_bg_blacck"
                 android:gravity="center"
                 android:elevation="1dp"
-                android:layout_marginLeft="4dp"
+
 
                 android:padding="3dp"
                 app:srcCompat="@drawable/baseline_more_vert_24"
@@ -65,9 +67,13 @@
             android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/introVlayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             >
             <VideoView
@@ -252,46 +258,47 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tpR"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/topic_recyler2"/>
 
+        <LinearLayout
+            android:id="@+id/buttonBuy"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/btn_bg_themic"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
 
+            >
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="Buy @30"
+                android:fontFamily="@font/font"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/dollar"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+
+
+        </LinearLayout>
     </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/buttonBuy"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/btn_bg_themic"
-        android:layout_gravity="bottom"
-     android:gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
 
-        >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="Buy @30"
-
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"/>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/dollar"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            />
-
-
-
-    </LinearLayout>
 </LinearLayout>

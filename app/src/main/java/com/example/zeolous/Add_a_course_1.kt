@@ -139,7 +139,11 @@ class Add_a_course_1 : AppCompatActivity() {
 
                     mdef.child("courses").child(category1.toString()).child(UIDC!!).setValue(addd_c)
                     mdef.child("courses").child(category1.toString()).child(UIDC!!).child("enroll").setValue("0")
-                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("rating").setValue("0")
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("rating").setValue("5")
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("ratingR").setValue("5")
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("setup").setValue("0")
+                    mdef.child("courses").child(category1.toString()).child(UIDC!!).child("cUID").setValue(FirebaseAuth.getInstance().currentUser!!.uid)
+
                     mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                         val no = it.child("courseNumber").value.toString()
                         var count = Integer.parseInt(no)
@@ -147,6 +151,7 @@ class Add_a_course_1 : AppCompatActivity() {
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                             val name = it.child("name").value.toString()
                             mdef.child("courses").child(category1.toString()).child(UIDC!!).child("creator").setValue(name)
+
                         }
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).child("courseNumber").setValue(count)
                         mdef.child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid).child("courses").child("C$count").child("Category").setValue(category1)

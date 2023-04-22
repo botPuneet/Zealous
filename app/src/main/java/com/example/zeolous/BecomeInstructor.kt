@@ -12,8 +12,7 @@ class BecomeInstructor : AppCompatActivity() {
         binding = ActivityBecomeInstructorBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.backCourse.setOnClickListener{
-            val intent = Intent(this, Home::class.java)
-            startActivity(intent)
+         finish()
         }
 
         binding.btnBecomeInstructor.setOnClickListener{

@@ -76,6 +76,7 @@ class add_course9 : AppCompatActivity() {
             dbms.child("type").setValue("ylink")
             binding_a9.textView12dfgds.visibility = View.VISIBLE
             binding_a9.editTextTextMultiLineesd.visibility = View.VISIBLE
+            binding_a9.linkkY.visibility = View.VISIBLE
             Lflag = true
         }
 

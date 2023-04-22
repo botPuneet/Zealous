@@ -1,5 +1,6 @@
 package com.example.zeolous
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +13,8 @@ import com.example.zeolous.Adapter.objectiveAdapter
 import com.example.zeolous.databinding.ActivityViewCourse3Binding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 
 class viewCourse_3 : AppCompatActivity() {
@@ -24,6 +27,7 @@ class viewCourse_3 : AppCompatActivity() {
     private lateinit var adapter1 : objectiveAdapter
     var position1 : String?= null
     var position2 : String?= null
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding_v3 = ActivityViewCourse3Binding.inflate(layoutInflater)
@@ -68,7 +72,7 @@ class viewCourse_3 : AppCompatActivity() {
 
                     val value = Uri.parse(content)
                 val intent = Intent(Intent.ACTION_VIEW, value)
-                  intent.type = "application/pdf"
+
                 // start activity
 
                 // start activity
@@ -89,6 +93,25 @@ class viewCourse_3 : AppCompatActivity() {
 
                 // start activity
                 startActivity(intent)}
+
+
+            }
+
+
+            if(type =="ylink"){
+
+
+                val content = it.child("subtopicContent").child("T$position1").child("S$position2").child("content").value.toString()
+                binding_v3.lllink.visibility = View.VISIBLE
+                    Toast.makeText(this@viewCourse_3, content, Toast.LENGTH_SHORT).show()
+                binding_v3.youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
+                    val videoId = content
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+
+                        youTubePlayer.loadVideo(videoId, 0F)
+                    }
+                })
+
 
             }
 

@@ -19,4 +19,6 @@ class Home : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
     }
+
+
 }

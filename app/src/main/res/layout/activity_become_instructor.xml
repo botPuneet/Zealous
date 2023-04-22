@@ -47,7 +47,7 @@
                     android:fontFamily="@font/font"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/white"
-                    android:text="Welcome to Zelous Tube Application"/>
+                    android:text="Welcome to Zealous Tube Application"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"

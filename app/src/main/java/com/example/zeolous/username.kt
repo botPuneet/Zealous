@@ -27,13 +27,14 @@ class username : AppCompatActivity() {
         binding.button.setOnClickListener {
             val name = binding.imageView.text.toString()
             dbms.child(name!!).get().addOnSuccessListener {
-                if(it.value=="true"){
+                if(it.value!=null){
                     Toast.makeText(this,"Sorry Already taken",Toast.LENGTH_SHORT).show()
                 }
-               else{ dbms.child(name!!).setValue("true")
+               else{ dbms.child(name!!).setValue(FirebaseAuth.getInstance().currentUser!!.uid)
                     preferences = this.getSharedPreferences("userData", Context.MODE_PRIVATE)
                     val editor : SharedPreferences.Editor = preferences.edit()
                     editor.putString("username",name)
+                    editor.putString("vFlag","0")
                     editor.apply()
                     dbms2.child(FirebaseAuth.getInstance().getCurrentUser()!!.getUid()).child("username").setValue(name)
                 var intent3 = Intent(this,personilazation2::class.java)

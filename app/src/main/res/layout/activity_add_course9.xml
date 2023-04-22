@@ -169,6 +169,7 @@
                 android:background="@drawable/btn_bg_themic"
                 android:elevation="10dp"
                 android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:text="youtube Video link"
                 android:layout_height="wrap_content"
 
@@ -239,8 +240,47 @@
                 <TextView
                     android:id="@+id/pdfView"
                     android:layout_width="300dp"
-                    android:layout_height="220dp"
+                    android:layout_height="wrap_content"
                     android:visibility="gone"
+                    android:text="pdf"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linkkY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/pdfViewfdbfd"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="example - (if youtube link is : \n https://www.youtube.com/watch?v=D4hAVemuQXY)"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/pdfViewfdbfddfsxfd"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="(enter only :  D4hAVemuQXY ) "
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     />
