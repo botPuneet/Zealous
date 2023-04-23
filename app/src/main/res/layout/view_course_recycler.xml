@@ -20,7 +20,7 @@
             android:id="@+id/best_course_img"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:src="@drawable/a"
+            android:src="@drawable/tripod"
             android:padding="2dp"
             android:layout_marginTop="5dp"
 

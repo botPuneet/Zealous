@@ -81,7 +81,7 @@ class Update_profile : AppCompatActivity() {
                     Toast.makeText(this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener{
 
-                    Toast.makeText(this, "failed to upload thee image", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "failed to upload the image", Toast.LENGTH_SHORT).show()
                 }
 
                 flag_img = false

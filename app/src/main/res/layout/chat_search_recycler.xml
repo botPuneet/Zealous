@@ -22,7 +22,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:elevation="32dp"
-                android:src="@drawable/a"
+                android:src="@drawable/tripod"
                 />
 
     <LinearLayout

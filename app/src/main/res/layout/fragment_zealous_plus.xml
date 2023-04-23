@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$1000"
+            android:text="0"
             android:textColor="@color/themic1"
             android:textSize="29dp"
             android:textStyle="bold"
@@ -89,7 +89,7 @@
             <Button
                 android:layout_width="75dp"
                 android:layout_height="35dp"
-                android:text="$100"
+                android:text="0"
                 android:textSize="20dp"
                 android:fontFamily="@font/font"
                 android:layout_marginLeft="55dp"
@@ -124,7 +124,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1200"
+            android:text="0"
             android:textColor="@color/themic1"
             android:textSize="29dp"
             android:textStyle="bold"
@@ -147,7 +147,7 @@
             <Button
                 android:layout_width="75dp"
                 android:layout_height="35dp"
-                android:text="120+"
+                android:text="0"
                 android:textSize="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
@@ -181,7 +181,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.3/5"
+            android:text="0"
             android:textColor="@color/themic1"
             android:textSize="29dp"
             android:textStyle="bold"
@@ -204,7 +204,7 @@
             <Button
                 android:layout_width="75dp"
                 android:layout_height="35dp"
-                android:text="4.1"
+                android:text="0"
                 android:textSize="20dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
@@ -242,10 +242,20 @@
 
         </LinearLayout>
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/font"
+                android:text="coming soon"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/best_selling_recycler"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 tools:listitem="@layout/best_selling_recycler"
                 android:layout_height="1000dp" />
 

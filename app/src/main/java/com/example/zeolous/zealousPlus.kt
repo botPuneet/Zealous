@@ -72,7 +72,7 @@ class zealousPlus : Fragment() {
              fragmentmanager?.let{bottomSheet.show(it,"becoming")}
          }
 //
-        dataIntializa()
+
 
         binding.viewall.setOnClickListener{
             val intent  = Intent(this@zealousPlus.requireContext(), View_All_Courses::class.java)
@@ -89,30 +89,6 @@ class zealousPlus : Fragment() {
 
 
     }
-    private fun dataIntializa(){
 
-        best_corse_array = arrayListOf<Best_selling_course>()
-        Img_arr= arrayOf(
-            R.drawable.a,
-            R.drawable.b,   R.drawable.b,
-            R.drawable.d,
-            R.drawable.e,
-            R.drawable.f,
-
-            )
-
-        Tittle = arrayOf(
-            getString(R.string.head_1),
-            getString(R.string.head_2),
-            getString(R.string.head_3),
-            getString(R.string.head_4),
-            getString(R.string.head_5),
-            getString(R.string.head_6)
-        )
-        for(i in Img_arr.indices){
-            val temp = Best_selling_course(Img_arr[i],Tittle[i])
-            best_corse_array.add(temp)
-        }
-    }
 
 }

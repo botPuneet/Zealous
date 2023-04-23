@@ -24,7 +24,7 @@
             android:elevation="32dp"
             android:padding="5dp"
             android:background="@drawable/btn_bg_blacck"
-            android:src="@drawable/c"/>
+            android:src="@drawable/tripod"/>
         <TextView
             android:id="@+id/top_Title_br"
             android:textColor="@color/black"
